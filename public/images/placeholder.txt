@@ -1,0 +1,32 @@
+# Placeholder Images
+
+This directory should contain the following images for the website:
+
+## Hero Section Images
+- gaming-setup-1.jpg (1920x1080) - High-end gaming setup with RGB lighting
+- workstation-setup.jpg (1920x1080) - Professional workstation setup
+- custom-build-1.jpg (1920x1080) - Custom PC build showcase
+
+## Gallery Images
+- gaming-build-1.jpg (400x300) - High-end gaming PC
+- gaming-build-2.jpg (400x300) - Compact gaming PC
+- gaming-build-3.jpg (400x300) - Budget gaming build
+- workstation-build-1.jpg (400x300) - Content creation workstation
+- workstation-build-2.jpg (400x300) - Professional workstation
+- custom-build-1.jpg (400x300) - Custom RGB build
+
+## Testimonial Images
+- testimonial-1.jpg (100x100) - Sarah Johnson
+- testimonial-2.jpg (100x100) - Michael Chen
+- testimonial-3.jpg (100x100) - Emily Rodriguez
+- testimonial-4.jpg (100x100) - David Thompson
+
+## Recommended Image Sources
+- Unsplash.com for high-quality computer/tech images
+- Pexels.com for professional photos
+- Custom photography of actual builds
+
+## Image Optimization
+- Use WebP format for better performance
+- Compress images for web use
+- Ensure responsive sizing
