@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import AnimatedButton from './AnimatedButton'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0)
   const [isClient, setIsClient] = useState(false)
+  const { theme } = useTheme()
   
-  const heroImages = [
+  // Different images for light and dark mode
+  const lightModeImage = '/images/LightLandingPic.jpg'
+  const darkModeImages = [
     'https://picsum.photos/1920/1080?random=1',
     'https://picsum.photos/1920/1080?random=2',
     'https://picsum.photos/1920/1080?random=3',
@@ -19,59 +24,111 @@ export default function Hero() {
 
   useEffect(() => {
     if (!isClient) return
-    
+
+    const currentImages = theme === 'light' ? [lightModeImage] : darkModeImages
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length)
+      setCurrentImage((prev) => (prev + 1) % currentImages.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [isClient, heroImages.length])
+  }, [isClient, theme, lightModeImage, darkModeImages])
 
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-white">
-      {/* Content */}
-      <div className="container-custom px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-large font-light mb-12 text-black">
-            Professional
-            <span className="block font-light">Computer Building</span>
-          </h1>
-          <p className="text-subtitle mb-16 max-w-3xl mx-auto">
-            Custom PCs, Gaming Rigs, and Workstations built to perfection. 
-            Expert assembly, premium components, and unbeatable performance.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <button className="btn-primary">
-              Start Your Build
-            </button>
-            <button className="btn-secondary">
-              View Gallery
-            </button>
+      return (
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={theme === 'light' ? lightModeImage : darkModeImages[currentImage]}
+              alt="Professional Computer Setup"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/45"></div>
           </div>
-        </div>
+          
+          {/* Content - Positioned on top of image */}
+          <div className="container-custom px-4 relative z-20 flex flex-col items-center justify-center min-h-screen">
+            <div className="max-w-5xl mx-auto text-center">
+              <h1 className="text-6xl md:text-8xl font-light leading-tight text-primary-50 mb-12">
+                Professional
+                <span className="block font-light">Computer Building</span>
+              </h1>
+              <p className="text-xl text-primary-100 font-light leading-relaxed mb-16 max-w-3xl mx-auto">
+                Custom PCs, Gaming Rigs, and Workstations built to perfection.
+                Expert assembly, premium components, and unbeatable performance.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-8 justify-center">
+                <AnimatedButton variant="primary">
+                  Start Your Build
+                </AnimatedButton>
+                <AnimatedButton variant="secondary">
+                  View Gallery
+                </AnimatedButton>
+              </div>
+            </div>
 
-        {/* Stats */}
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-16 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-6xl font-light text-black mb-4">500+</div>
-            <div className="text-gray-600 text-lg font-light">Computers Built</div>
+            {/* Stats */}
+            <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-16 max-w-4xl mx-auto">
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+                {/* Liquid glass background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
+                {/* Animated shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                {/* Border with gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
+                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
+                </div>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">100+</div>
+                  <div className="text-white/90 text-lg font-light drop-shadow-md">Computers Built</div>
+                </div>
+              </div>
+              
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+                {/* Liquid glass background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
+                {/* Animated shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                {/* Border with gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
+                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
+                </div>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">5+</div>
+                  <div className="text-white/90 text-lg font-light drop-shadow-md">Years Experience</div>
+                </div>
+              </div>
+              
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+                {/* Liquid glass background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
+                {/* Animated shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                {/* Border with gradient */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
+                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
+                </div>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">100%</div>
+                  <div className="text-white/90 text-lg font-light drop-shadow-md">Satisfaction Rate</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-6xl font-light text-black mb-4">5+</div>
-            <div className="text-gray-600 text-lg font-light">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-6xl font-light text-black mb-4">100%</div>
-            <div className="text-gray-600 text-lg font-light">Satisfaction Rate</div>
-          </div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-        </div>
-      </div>
-    </section>
-  )
+          {/* Scroll indicator */}
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="w-6 h-10 border-2 border-primary-50 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-primary-50 rounded-full mt-2 animate-bounce"></div>
+            </div>
+          </div>
+        </section>
+      )
 }

@@ -1,5 +1,7 @@
 'use client'
 
+import AnimatedButton from './AnimatedButton'
+
 export default function About() {
   const stats = [
     { number: '500+', label: 'Computers Built' },
@@ -32,14 +34,19 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gray-50">
+        <section id="about" className="section-padding relative overflow-hidden bg-[#31363F] dark:bg-black">
+          {/* Liquid glass background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/5 via-transparent to-accent-500/5"></div>
+          {/* Content */}
+          <div className="relative z-10">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
               About <span className="gradient-text">Next Build</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Founded in 2019, Next Build has been at the forefront of custom computer building, 
               delivering high-performance systems tailored to our clients' specific needs. Our 
               passion for technology and commitment to excellence has made us the go-to choice 
@@ -51,12 +58,12 @@ export default function About() {
               the highest standards of quality and performance.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <button className="btn-primary text-lg px-8 py-4">
+              <AnimatedButton variant="primary" className="text-lg">
                 Our Story
-              </button>
-              <button className="btn-secondary text-lg px-8 py-4">
+              </AnimatedButton>
+              <AnimatedButton variant="secondary" className="text-lg">
                 Meet the Team
-              </button>
+              </AnimatedButton>
             </div>
           </div>
           <div className="relative">
@@ -129,6 +136,7 @@ export default function About() {
           </div>
         </div>
       </div>
+          </div>
     </section>
   )
 }

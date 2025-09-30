@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import AnimatedButton from './AnimatedButton'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -74,13 +75,18 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="section-padding bg-gray-50">
+        <section id="contact" className="section-padding relative overflow-hidden bg-[#31363F] dark:bg-black">
+          {/* Liquid glass background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/5 via-transparent to-accent-500/5"></div>
+          {/* Content */}
+          <div className="relative z-10">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Ready to start your custom build? Contact us for a free consultation and quote
           </p>
         </div>
@@ -206,13 +212,14 @@ export default function Contact() {
                   />
                 </div>
 
-                <button
+                <AnimatedButton
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  variant="primary"
+                  className="w-full text-lg py-4"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
+                </AnimatedButton>
               </form>
             )}
           </div>
@@ -264,6 +271,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+          </div>
     </section>
   )
 }

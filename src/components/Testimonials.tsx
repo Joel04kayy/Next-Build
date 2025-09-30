@@ -44,13 +44,13 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-[#31363F] dark:bg-black">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it - hear from our satisfied customers
           </p>
         </div>

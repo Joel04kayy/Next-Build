@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import AnimatedButton from './AnimatedButton'
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -69,13 +70,13 @@ export default function Gallery() {
     : builds.filter(build => build.category === selectedCategory)
 
   return (
-    <section id="gallery" className="section-padding bg-white">
+        <section id="gallery" className="section-padding bg-[#31363F] dark:bg-black">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
             Our <span className="gradient-text">Builds</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Explore our portfolio of custom-built computers and see the quality of our work
           </p>
         </div>
@@ -125,9 +126,9 @@ export default function Gallery() {
                     </div>
                   ))}
                 </div>
-                <button className="w-full btn-primary text-lg">
+                <AnimatedButton variant="primary" className="w-full text-lg">
                   View Details
-                </button>
+                </AnimatedButton>
               </div>
             </div>
           ))}
@@ -140,9 +141,9 @@ export default function Gallery() {
             <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
               Let's create the perfect computer for your needs with professional assembly and premium components
             </p>
-            <button className="bg-white text-gray-700 hover:bg-gray-100 font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg">
+            <AnimatedButton variant="secondary" className="text-lg">
               Start Your Build
-            </button>
+            </AnimatedButton>
           </div>
         </div>
       </div>
