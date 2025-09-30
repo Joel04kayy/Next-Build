@@ -70,13 +70,13 @@ export default function Gallery() {
     : builds.filter(build => build.category === selectedCategory)
 
   return (
-        <section id="gallery" className="section-padding bg-[#31363F] dark:bg-black">
+        <section id="gallery" className="section-padding bg-gray-100 dark:bg-[#0a0a0a]">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
             Our <span className="gradient-text">Builds</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Explore our portfolio of custom-built computers and see the quality of our work
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function Gallery() {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 ${
+              className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-300 ${
                 selectedCategory === category.id
                   ? 'bg-primary-600 text-white shadow-xl transform scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 shadow-lg'
@@ -109,7 +109,7 @@ export default function Gallery() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-6 right-6 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <div className="absolute top-6 right-6 bg-primary-600 text-white px-4 py-2 rounded-2xl text-sm font-semibold shadow-lg">
                   {build.price}
                 </div>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>

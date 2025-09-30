@@ -34,25 +34,33 @@ export default function About() {
   ]
 
   return (
-        <section id="about" className="section-padding relative overflow-hidden bg-[#31363F] dark:bg-black">
+        <section id="about" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#000000] dark:brightness-75">
           {/* Liquid glass background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/5 via-transparent to-accent-500/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10"></div>
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-white/30 rounded-full -translate-x-16 -translate-y-16 blur-xl"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent-500/30 rounded-full translate-x-12 translate-y-12 blur-xl"></div>
+            <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/20 rounded-full blur-lg"></div>
+          </div>
           {/* Content */}
           <div className="relative z-10">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
               About <span className="gradient-text">Next Build</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               Founded in 2019, Next Build has been at the forefront of custom computer building, 
               delivering high-performance systems tailored to our clients' specific needs. Our 
               passion for technology and commitment to excellence has made us the go-to choice 
               for gamers, professionals, and tech enthusiasts.
             </p>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
               We believe that every computer should be built with purpose, precision, and passion. 
               From high-end gaming rigs to professional workstations, we ensure each build meets 
               the highest standards of quality and performance.
@@ -68,8 +76,8 @@ export default function About() {
           </div>
           <div className="relative">
             <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-12">
-              <div className="bg-white rounded-2xl p-8 shadow-2xl">
-                <div className="w-24 h-24 bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl flex items-center justify-center mx-auto mb-8">
+              <div className="bg-white rounded-3xl p-8 shadow-2xl">
+                <div className="w-24 h-24 bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-8">
                   <span className="text-white text-3xl font-bold">N</span>
                 </div>
                 <h3 className="text-3xl font-bold text-center text-gray-900 mb-6">

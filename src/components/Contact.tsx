@@ -75,25 +75,33 @@ export default function Contact() {
   ]
 
   return (
-        <section id="contact" className="section-padding relative overflow-hidden bg-[#31363F] dark:bg-black">
+        <section id="contact" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#000000] dark:brightness-75">
           {/* Liquid glass background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/5 via-transparent to-accent-500/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10"></div>
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-white/30 rounded-full -translate-x-16 -translate-y-16 blur-xl"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent-500/30 rounded-full translate-x-12 translate-y-12 blur-xl"></div>
+            <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/20 rounded-full blur-lg"></div>
+          </div>
           {/* Content */}
           <div className="relative z-10">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Ready to start your custom build? Contact us for a free consultation and quote
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Contact Form */}
-          <div className="bg-white rounded-3xl shadow-2xl p-12">
+          <div className="bg-gray-100 rounded-3xl shadow-2xl p-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-8">Send us a message</h3>
             
             {isSubmitted ? (
@@ -120,7 +128,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                       placeholder="Your full name"
                     />
                   </div>
@@ -135,7 +143,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -152,7 +160,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -165,7 +173,7 @@ export default function Contact() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                     >
                       <option value="">Select a service</option>
                       <option value="gaming">Gaming PC</option>
@@ -185,7 +193,7 @@ export default function Contact() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                    className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                   >
                     <option value="">Select budget range</option>
                     <option value="under-1000">Under $1,000</option>
@@ -207,7 +215,7 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                    className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
                     placeholder="Tell us about your requirements..."
                   />
                 </div>
@@ -243,7 +251,7 @@ export default function Contact() {
             </div>
 
             {/* Map Placeholder */}
-            <div className="bg-gray-200 rounded-2xl h-80 flex items-center justify-center">
+            <div className="bg-gray-200 rounded-3xl h-80 flex items-center justify-center">
               <div className="text-center">
                 <div className="text-6xl mb-4">🗺️</div>
                 <p className="text-gray-600 text-xl">Interactive map coming soon</p>
@@ -254,16 +262,16 @@ export default function Contact() {
             <div>
               <h4 className="text-2xl font-semibold text-gray-900 mb-6">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
+                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
                   📘
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
+                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
                   🐦
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
+                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
                   📷
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
+                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
                   📺
                 </a>
               </div>

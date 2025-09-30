@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import AnimatedButton from './AnimatedButton'
+import LiquidGlassButton from './LiquidGlassButton'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Hero() {
@@ -12,11 +12,7 @@ export default function Hero() {
   
   // Different images for light and dark mode
   const lightModeImage = '/images/LightLandingPic.jpg'
-  const darkModeImages = [
-    'https://picsum.photos/1920/1080?random=1',
-    'https://picsum.photos/1920/1080?random=2',
-    'https://picsum.photos/1920/1080?random=3',
-  ]
+  const darkModeImage = '/images/DarkLandingPic.jpeg'
 
   useEffect(() => {
     setIsClient(true)
@@ -25,19 +21,16 @@ export default function Hero() {
   useEffect(() => {
     if (!isClient) return
 
-    const currentImages = theme === 'light' ? [lightModeImage] : darkModeImages
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % currentImages.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [isClient, theme, lightModeImage, darkModeImages])
+    // No need for image rotation since we have specific images for each theme
+    setCurrentImage(0)
+  }, [isClient, theme])
 
       return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src={theme === 'light' ? lightModeImage : darkModeImages[currentImage]}
+              src={theme === 'light' ? lightModeImage : darkModeImage}
               alt="Professional Computer Setup"
               fill
               className="object-cover"
@@ -59,27 +52,23 @@ export default function Hero() {
                 Expert assembly, premium components, and unbeatable performance.
               </p>
               <div className="flex flex-col sm:flex-row gap-8 justify-center">
-                <AnimatedButton variant="primary">
+                <LiquidGlassButton variant="primary">
                   Start Your Build
-                </AnimatedButton>
-                <AnimatedButton variant="secondary">
+                </LiquidGlassButton>
+                <LiquidGlassButton variant="secondary">
                   View Gallery
-                </AnimatedButton>
+                </LiquidGlassButton>
               </div>
             </div>
 
             {/* Stats */}
             <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-16 max-w-4xl mx-auto">
-              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group border-2 border-white/20">
                 {/* Liquid glass background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
                 {/* Animated shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                {/* Border with gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
-                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
-                </div>
                 {/* Content */}
                 <div className="relative z-10">
                   <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">100+</div>
@@ -87,16 +76,12 @@ export default function Hero() {
                 </div>
               </div>
               
-              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group border-2 border-white/20">
                 {/* Liquid glass background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
                 {/* Animated shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                {/* Border with gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
-                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
-                </div>
                 {/* Content */}
                 <div className="relative z-10">
                   <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">5+</div>
@@ -104,16 +89,12 @@ export default function Hero() {
                 </div>
               </div>
               
-              <div className="text-center relative overflow-hidden rounded-2xl p-8 group">
+              <div className="text-center relative overflow-hidden rounded-2xl p-8 group border-2 border-white/20">
                 {/* Liquid glass background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5"></div>
                 {/* Animated shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                {/* Border with gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/30 via-white/20 to-white/30 p-[1px]">
-                  <div className="w-full h-full rounded-2xl bg-black/20"></div>
-                </div>
                 {/* Content */}
                 <div className="relative z-10">
                   <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">100%</div>

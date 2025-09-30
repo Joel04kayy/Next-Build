@@ -49,7 +49,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-white/90 dark:text-primary-300 hover:text-white dark:hover:text-primary-50 font-light text-lg transition-colors duration-500 drop-shadow-sm"
+                className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 font-bold text-xl transition-colors duration-500"
               >
                 {item.name}
               </Link>
@@ -68,7 +68,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg
-                className="w-6 h-6 text-primary-700 dark:text-primary-300"
+                className="w-6 h-6 text-gray-900 dark:text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white/90 dark:text-primary-300 hover:text-white dark:hover:text-primary-50 font-light text-lg transition-colors duration-500 py-2 drop-shadow-sm"
+                  className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 font-bold text-xl transition-colors duration-500 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

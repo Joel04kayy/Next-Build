@@ -44,13 +44,13 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="section-padding bg-[#31363F] dark:bg-black">
+    <section className="section-padding bg-gray-100 dark:bg-[#0a0a0a]">
       <div className="container-custom">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it - hear from our satisfied customers
           </p>
         </div>
@@ -81,11 +81,11 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="text-center">
-                <div className="w-20 h-20 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center backdrop-blur-sm">
+                <div className="w-20 h-20 bg-white/20 rounded-3xl mx-auto mb-6 flex items-center justify-center backdrop-blur-sm">
                   <img
                     src={testimonials[currentTestimonial].image}
                     alt={testimonials[currentTestimonial].name}
-                    className="w-16 h-16 rounded-full object-cover"
+                    className="w-16 h-16 rounded-2xl object-cover"
                   />
                 </div>
                 <div className="font-semibold text-2xl">{testimonials[currentTestimonial].name}</div>
@@ -99,7 +99,7 @@ export default function Testimonials() {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                  className={`w-4 h-4 rounded-2xl transition-all duration-300 ${
                     index === currentTestimonial
                       ? 'bg-white scale-125'
                       : 'bg-white/50 hover:bg-white/75'

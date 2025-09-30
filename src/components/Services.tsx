@@ -42,18 +42,26 @@ export default function Services() {
   ]
 
       return (
-        <section id="services" className="section-padding relative overflow-hidden bg-[#31363F] dark:bg-black">
+        <section id="services" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#0a0a0a]">
           {/* Liquid glass background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/5 via-transparent to-accent-500/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10"></div>
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-white/30 rounded-full -translate-x-16 -translate-y-16 blur-xl"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent-500/30 rounded-full translate-x-12 translate-y-12 blur-xl"></div>
+            <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/20 rounded-full blur-lg"></div>
+          </div>
           {/* Content */}
           <div className="relative z-10">
           <div className="container-custom">
             <div className="text-center mb-24">
-              <h2 className="text-large font-light mb-8">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
                 Our Services
               </h2>
-              <p className="text-subtitle max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 From gaming rigs to professional workstations, we build computers that exceed expectations
               </p>
             </div>
@@ -64,7 +72,7 @@ export default function Services() {
             <button
               key={index}
               onClick={() => setActiveService(index)}
-              className={`px-8 py-4 font-medium transition-all duration-500 ${
+              className={`px-8 py-4 font-medium transition-all duration-500 rounded-2xl ${
                 activeService === index
                   ? 'bg-black dark:bg-gray-700 text-white dark:text-white'
                   : 'bg-transparent text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border border-gray-200 dark:border-gray-600 hover:border-black dark:hover:border-gray-500'
@@ -103,7 +111,7 @@ export default function Services() {
                   Get Started
                 </AnimatedButton>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700 p-16 text-center">
+              <div className="bg-gray-50 dark:bg-gray-700 p-16 text-center rounded-3xl">
                 <div className="w-32 h-32 bg-white dark:bg-gray-700 rounded-full mx-auto mb-8 flex items-center justify-center shadow-sm">
                   <span className="text-6xl">{services[activeService].icon}</span>
                 </div>
@@ -130,7 +138,7 @@ export default function Services() {
               { step: '04', title: 'Delivery', description: 'Setup and support for your new system' }
             ].map((item, index) => (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-black dark:bg-gray-700 text-white dark:text-white flex items-center justify-center text-lg font-medium mx-auto mb-8 group-hover:bg-gray-700 dark:group-hover:bg-gray-600 transition-colors duration-500">
+                <div className="w-16 h-16 bg-black dark:bg-gray-700 text-white dark:text-white flex items-center justify-center text-lg font-medium mx-auto mb-8 group-hover:bg-gray-700 dark:group-hover:bg-gray-600 transition-colors duration-500 rounded-2xl">
                   {item.step}
                 </div>
                 <h4 className="text-2xl font-light text-black dark:text-white mb-4">{item.title}</h4>
