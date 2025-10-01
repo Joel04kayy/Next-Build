@@ -48,9 +48,18 @@ export default function Hero() {
           {/* Content - Positioned on top of image */}
           <div className="container-custom px-4 relative z-20 flex flex-col items-center justify-center min-h-screen">
             <div className="max-w-5xl mx-auto text-center">
-              <h1 className="text-6xl md:text-8xl font-light leading-tight text-primary-50 mb-12">
-                Professional
-                <span className="block font-light">Computer Building</span>
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight text-primary-50 mb-12 tracking-wider text-center flex justify-center items-center">
+                <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
+                  Quality
+                </span>
+                <span className="mx-4 text-white/60">•</span>
+                <span className="bg-gradient-to-r from-blue-100 via-white to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
+                  Performance
+                </span>
+                <span className="mx-4 text-white/60">•</span>
+                <span className="bg-gradient-to-r from-purple-100 via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                  Aesthetic
+                </span>
               </h1>
               <p className="text-xl text-primary-100 font-light leading-relaxed mb-16 max-w-3xl mx-auto">
                 Custom PCs, Gaming Rigs, and Workstations built to perfection.

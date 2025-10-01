@@ -1,35 +1,90 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import AnimatedButton from './AnimatedButton'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Services() {
+  const { theme } = useTheme()
   const [activeService, setActiveService] = useState(0)
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    width: 0,
+    height: 0
+  })
+  const [isInitialized, setIsInitialized] = useState(false)
+  const [hasUserInteracted, setHasUserInteracted] = useState(false)
+  const [pulsingStep, setPulsingStep] = useState(0)
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
+
+  // Update indicator position and size when activeService changes
+  useEffect(() => {
+    const activeButton = buttonRefs.current[activeService]
+    if (activeButton) {
+      const rect = activeButton.getBoundingClientRect()
+      const containerRect = activeButton.parentElement?.getBoundingClientRect()
+      if (containerRect) {
+        setIndicatorStyle({
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          height: rect.height
+        })
+        
+        // Mark as initialized after first measurement
+        if (!isInitialized) {
+          setIsInitialized(true)
+        }
+      }
+    }
+  }, [activeService, isInitialized])
+
+  // Pulsing animation for process steps
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulsingStep((prev) => (prev + 1) % 4)
+    }, 2000) // Change every 2 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Handle button click with user interaction tracking
+  const handleServiceClick = (index: number) => {
+    if (index !== activeService) {
+      setHasUserInteracted(true)
+    }
+    setActiveService(index)
+  }
 
   const services = [
     {
-      title: 'Gaming PCs',
-      description: 'High-performance gaming rigs optimized for the latest games and VR experiences.',
-      features: ['RTX 40 Series GPUs', 'High-refresh rate monitors', 'RGB lighting', 'Liquid cooling options'],
-      price: 'Starting at $1,200',
-      icon: '🎮',
-      color: 'from-gray-600 to-gray-800'
+      title: 'Custom PCs',
+      description: 'High-performance custom computers built to your exact specifications and budget.',
+      features: ['Gaming rigs', 'Workstations', 'Content creation PCs', 'Budget-friendly builds'],
+      price: 'Starting at $800',
+      icon: '🖥️',
+      color: 'from-blue-600 to-blue-800',
+      image: '/images/CustomPCServiceCardpic1.jpg',
+      lightImage: '/images/CustomPCServiceCardpic2.jpg'
     },
     {
-      title: 'Workstations',
-      description: 'Professional workstations for content creation, 3D modeling, and intensive computing tasks.',
-      features: ['Multi-core processors', 'Professional GPUs', 'High-speed storage', 'Workstation motherboards'],
-      price: 'Starting at $2,000',
-      icon: '💻',
-      color: 'from-gray-500 to-gray-700'
+      title: 'Setups',
+      description: 'Complete desk setups with monitors, peripherals, and cable management for the perfect workspace.',
+      features: ['Monitor configuration', 'Cable management', 'Ergonomic setup', 'RGB lighting'],
+      price: 'Starting at $300',
+      icon: '🖼️',
+      color: 'from-purple-600 to-purple-800',
+      image: '/images/Set up ServiceCardpic2.jpg',
+      lightImage: '/images/SetipServiceCardpic1.jpg'
     },
     {
-      title: 'Custom Builds',
-      description: 'Fully customized computers tailored to your specific needs and budget requirements.',
-      features: ['Personal consultation', 'Component selection', 'Cable management', 'Performance optimization'],
-      price: 'Custom pricing',
-      icon: '⚙️',
-      color: 'from-gray-700 to-gray-900'
+      title: 'Sim Rigs',
+      description: 'Professional racing and flight simulation setups with high-end components and realistic controls.',
+      features: ['Racing wheels', 'Flight sticks', 'VR integration', 'Motion platforms'],
+      price: 'Starting at $1,500',
+      icon: '🏎️',
+      color: 'from-red-600 to-red-800',
+      image: '/images/SimRigServiceCardpic2.jpg',
+      lightImage: '/images/SimRigServiceCardpic1.jpg'
     },
     {
       title: 'Repair & Upgrade',
@@ -37,7 +92,9 @@ export default function Services() {
       features: ['Diagnostic services', 'Hardware repairs', 'Performance upgrades', 'Data recovery'],
       price: 'Starting at $50',
       icon: '🔧',
-      color: 'from-gray-400 to-gray-600'
+      color: 'from-green-600 to-green-800',
+      image: '/images/repairServiceCardpic1.jpg',
+      lightImage: '/images/RepairServiceCardpic2.jpg'
     }
   ]
 
@@ -62,34 +119,94 @@ export default function Services() {
                 Our Services
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                From gaming rigs to professional workstations, we build computers that exceed expectations
+                From gaming rigs to professional workstations, we build setups that exceed expectations
               </p>
             </div>
 
         {/* Service Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-20">
+        <div className="flex justify-center gap-4 mb-20 relative">
+          {/* Sliding indicator */}
+          <div 
+            className={`absolute rounded-full pointer-events-none z-0 ${
+              isInitialized && hasUserInteracted ? 'transition-all duration-700 ease-out' : ''
+            }`}
+            style={{
+              left: `${indicatorStyle.left}px`,
+              width: `${indicatorStyle.width}px`,
+              height: `${indicatorStyle.height}px`,
+              top: '0px'
+            }}
+          >
+            {/* Clear liquid glass base */}
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-full"></div>
+            
+            {/* Clear liquid glass layers */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-white/10 rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/20 rounded-full"></div>
+            
+            {/* Clear liquid glass borders */}
+            <div className="absolute inset-0 border-2 border-white/30 rounded-full"></div>
+            <div className="absolute inset-0 border border-white/20 rounded-full"></div>
+            <div className="absolute inset-0 border border-white/10 rounded-full"></div>
+            
+            {/* Clear liquid glass highlight */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-transparent rounded-full"></div>
+            
+            {/* Clear liquid glass shimmer */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full animate-pulse"></div>
+            
+            {/* Clear liquid glass inner glow */}
+            <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/25 rounded-full"></div>
+            
+            {/* Clear liquid glass inner shadow */}
+            <div className="absolute inset-0 shadow-inner rounded-full"></div>
+            
+            {/* Clear liquid glass outer glow */}
+            <div className="absolute -inset-1 bg-white/10 rounded-full blur-sm"></div>
+            
+            {/* Clear liquid glass reflection */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-full"></div>
+          </div>
+
+          {/* Service buttons */}
           {services.map((service, index) => (
             <button
               key={index}
-              onClick={() => setActiveService(index)}
-              className={`px-8 py-4 font-medium transition-all duration-500 rounded-2xl ${
+              ref={(el) => (buttonRefs.current[index] = el)}
+              onClick={() => handleServiceClick(index)}
+              className={`relative px-8 py-4 font-medium transition-all duration-500 rounded-full overflow-hidden group z-10 ${
                 activeService === index
-                  ? 'bg-black dark:bg-gray-700 text-white dark:text-white'
-                  : 'bg-transparent text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white border border-gray-200 dark:border-gray-600 hover:border-black dark:hover:border-gray-500'
+                  ? 'transform scale-110 text-2xl font-bold'
+                  : 'text-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              {service.title}
+              {/* Inactive tab styling */}
+              {activeService !== index && (
+                <div className="absolute inset-0 bg-white/10 dark:bg-gray-800/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              )}
+              
+              {/* Text content */}
+              <span className="relative z-10 font-semibold text-sm">
+                {service.title}
+              </span>
             </button>
           ))}
         </div>
 
         {/* Active Service Details */}
-        <div className="minimal-card">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="minimal-card relative overflow-hidden group">
+          {/* Liquid glass background - same as LiquidGlassButton */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-3xl"></div>
+          
+          {/* Animated shimmer effect - same as LiquidGlassButton */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-3xl"></div>
+          </div>
+          
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
               <div>
-                <div className="text-6xl mb-8 text-black dark:text-white">
-                  {services[activeService].icon}
-                </div>
                 <h3 className="text-5xl font-light text-black dark:text-white mb-8">
                   {services[activeService].title}
                 </h3>
@@ -111,16 +228,33 @@ export default function Services() {
                   Get Started
                 </AnimatedButton>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700 p-16 text-center rounded-3xl">
-                <div className="w-32 h-32 bg-white dark:bg-gray-700 rounded-full mx-auto mb-8 flex items-center justify-center shadow-sm">
-                  <span className="text-6xl">{services[activeService].icon}</span>
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-3xl overflow-hidden relative">
+                {/* Full image frame for service showcase */}
+                <div className="w-full relative overflow-hidden group">
+                  {/* Service image or placeholder */}
+                  {services[activeService].image ? (
+                    <img 
+                      src={theme === 'light' && services[activeService].lightImage 
+                        ? services[activeService].lightImage 
+                        : services[activeService].image} 
+                      alt={services[activeService].title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                      <div className="text-8xl opacity-50">
+                        {services[activeService].icon}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Overlay with service name */}
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h4 className="text-2xl font-bold text-white text-center">
+                      {services[activeService].title}
+                    </h4>
+                  </div>
                 </div>
-                <h4 className="text-2xl font-light mb-6 text-black dark:text-white">
-                  Why Choose Us?
-                </h4>
-                <p className="text-subtitle">
-                  Professional assembly, quality components, and comprehensive support for all your computer building needs.
-                </p>
               </div>
             </div>
         </div>
@@ -138,8 +272,75 @@ export default function Services() {
               { step: '04', title: 'Delivery', description: 'Setup and support for your new system' }
             ].map((item, index) => (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-black dark:bg-gray-700 text-white dark:text-white flex items-center justify-center text-lg font-medium mx-auto mb-8 group-hover:bg-gray-700 dark:group-hover:bg-gray-600 transition-colors duration-500 rounded-2xl">
-                  {item.step}
+                <div className={`w-16 h-16 mx-auto mb-8 relative overflow-hidden group/icon transition-all duration-500 ${
+                  index === pulsingStep 
+                    ? 'scale-125' 
+                    : 'scale-100'
+                }`}>
+                  {/* Light mode - Clear liquid glass base */}
+                  <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass layers */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-white/10 rounded-2xl dark:hidden"></div>
+                  <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/20 rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass borders */}
+                  <div className="absolute inset-0 border-2 border-white/30 rounded-2xl dark:hidden"></div>
+                  <div className="absolute inset-0 border border-white/20 rounded-2xl dark:hidden"></div>
+                  <div className="absolute inset-0 border border-white/10 rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-transparent rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass shimmer */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl animate-pulse dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/25 rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass inner shadow */}
+                  <div className="absolute inset-0 shadow-inner rounded-2xl dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass outer glow */}
+                  <div className="absolute -inset-1 bg-white/10 rounded-2xl blur-sm dark:hidden"></div>
+                  
+                  {/* Light mode - Clear liquid glass reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-2xl dark:hidden"></div>
+                  
+                  {/* Dark mode - Dark liquid glass base */}
+                  <div className="absolute inset-0 bg-gray-800/20 backdrop-blur-xl rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass layers */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-gray-700/30 via-transparent to-gray-600/20 rounded-2xl hidden dark:block"></div>
+                  <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-gray-600/20 to-gray-700/40 rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass borders */}
+                  <div className="absolute inset-0 border-2 border-gray-600/40 rounded-2xl hidden dark:block"></div>
+                  <div className="absolute inset-0 border border-gray-500/30 rounded-2xl hidden dark:block"></div>
+                  <div className="absolute inset-0 border border-gray-400/20 rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 via-gray-700/30 to-transparent rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass shimmer */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent rounded-2xl animate-pulse hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-700/30 via-transparent to-gray-600/50 rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass inner shadow */}
+                  <div className="absolute inset-0 shadow-inner rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass outer glow */}
+                  <div className="absolute -inset-1 bg-gray-600/20 rounded-2xl blur-sm hidden dark:block"></div>
+                  
+                  {/* Dark mode - Dark liquid glass reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-500/40 via-transparent to-transparent rounded-2xl hidden dark:block"></div>
+                  
+                  {/* Step number */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center text-lg font-bold text-gray-600 dark:text-gray-300">
+                    {item.step}
+                  </div>
                 </div>
                 <h4 className="text-2xl font-light text-black dark:text-white mb-4">{item.title}</h4>
                 <p className="text-subtitle">{item.description}</p>
