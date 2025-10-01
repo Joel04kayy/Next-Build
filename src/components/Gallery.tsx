@@ -1,11 +1,50 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import AnimatedButton from './AnimatedButton'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Gallery() {
+  const { theme } = useTheme()
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    width: 0,
+    height: 0
+  })
+  const [isInitialized, setIsInitialized] = useState(false)
+  const [hasUserInteracted, setHasUserInteracted] = useState(false)
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
+
+  // Update indicator position and size when selectedCategory changes
+  useEffect(() => {
+    const activeButton = buttonRefs.current[categories.findIndex(cat => cat.id === selectedCategory)]
+    if (activeButton) {
+      const rect = activeButton.getBoundingClientRect()
+      const containerRect = activeButton.parentElement?.getBoundingClientRect()
+      if (containerRect) {
+        setIndicatorStyle({
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          height: rect.height
+        })
+        
+        // Mark as initialized after first measurement
+        if (!isInitialized) {
+          setIsInitialized(true)
+        }
+      }
+    }
+  }, [selectedCategory, isInitialized])
+
+  // Handle button click with user interaction tracking
+  const handleCategoryClick = (categoryId: string) => {
+    if (categoryId !== selectedCategory) {
+      setHasUserInteracted(true)
+    }
+    setSelectedCategory(categoryId)
+  }
 
   const categories = [
     { id: 'all', name: 'All Builds' },
@@ -70,7 +109,7 @@ export default function Gallery() {
     : builds.filter(build => build.category === selectedCategory)
 
   return (
-        <section id="gallery" className="section-padding bg-gray-100 dark:bg-[#0a0a0a]">
+    <section id="gallery" className="section-padding bg-gray-100 dark:bg-[#0a0a0a]">
       <div className="container-custom">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
@@ -81,19 +120,69 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
+        {/* Category Filter with Liquid Glass Design */}
+        <div className="flex justify-center space-x-4 mb-16 relative">
+          {/* Sliding indicator */}
+          {isInitialized && (
+            <div
+              className={`absolute bg-white/20 dark:bg-gray-800/30 rounded-full pointer-events-none z-0 ${
+                hasUserInteracted ? 'transition-all duration-500 ease-out' : ''
+              }`}
+              style={indicatorStyle}
+            >
+              {/* Clear liquid glass base */}
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-full"></div>
+              
+              {/* Clear liquid glass layers */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-white/10 rounded-full"></div>
+              <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/20 rounded-full"></div>
+              
+              {/* Clear liquid glass borders */}
+              <div className="absolute inset-0 border-2 border-white/30 rounded-full"></div>
+              <div className="absolute inset-0 border border-white/20 rounded-full"></div>
+              <div className="absolute inset-0 border border-white/10 rounded-full"></div>
+              
+              {/* Clear liquid glass highlight */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-transparent rounded-full"></div>
+              
+              {/* Clear liquid glass shimmer */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full animate-pulse"></div>
+              
+              {/* Clear liquid glass inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/25 rounded-full"></div>
+              
+              {/* Clear liquid glass inner shadow */}
+              <div className="absolute inset-0 shadow-inner rounded-full"></div>
+              
+              {/* Clear liquid glass outer glow */}
+              <div className="absolute -inset-1 bg-white/10 rounded-full blur-sm"></div>
+              
+              {/* Clear liquid glass reflection */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-full"></div>
+            </div>
+          )}
+
+          {/* Category buttons */}
+          {categories.map((category, index) => (
             <button
               key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-300 ${
+              ref={(el) => (buttonRefs.current[index] = el)}
+              onClick={() => handleCategoryClick(category.id)}
+              className={`relative px-8 py-4 font-medium transition-all duration-500 rounded-full overflow-hidden group z-10 ${
                 selectedCategory === category.id
-                  ? 'bg-primary-600 text-white shadow-xl transform scale-105'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 shadow-lg'
+                  ? 'transform scale-110 text-2xl font-bold'
+                  : 'text-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              {category.name}
+              {/* Inactive tab styling */}
+              {selectedCategory !== category.id && (
+                <div className="absolute inset-0 bg-white/10 dark:bg-gray-800/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              )}
+              
+              {/* Text content */}
+              <span className="relative z-10 font-semibold text-sm">
+                {category.name}
+              </span>
             </button>
           ))}
         </div>

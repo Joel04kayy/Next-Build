@@ -34,7 +34,7 @@ export default function About() {
   ]
 
   return (
-        <section id="about" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#000000] dark:brightness-75">
+        <section id="about" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#0a0a0a]">
           {/* Liquid glass background */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25"></div>

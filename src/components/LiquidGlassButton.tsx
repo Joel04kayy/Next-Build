@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 interface LiquidGlassButtonProps {
   children: ReactNode
   onClick?: () => void
+  href?: string
   className?: string
   variant?: 'primary' | 'secondary'
   disabled?: boolean
@@ -13,6 +14,7 @@ interface LiquidGlassButtonProps {
 export default function LiquidGlassButton({ 
   children, 
   onClick, 
+  href,
   className = '', 
   variant = 'primary',
   disabled = false 
@@ -26,10 +28,27 @@ export default function LiquidGlassButton({
 
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : ""
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (href) {
+      e.preventDefault()
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    if (onClick) {
+      onClick()
+    }
+  }
+
+  const Component = href ? 'a' : 'button'
+  const componentProps = href 
+    ? { href, onClick: handleClick }
+    : { onClick: handleClick, disabled }
+
   return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
+    <Component
+      {...componentProps}
       className={`${baseClasses} ${variantClasses[variant]} ${disabledClasses} ${className}`}
     >
       {/* Liquid glass background */}
@@ -47,6 +66,6 @@ export default function LiquidGlassButton({
       <span className="relative z-10">
         {children}
       </span>
-    </button>
+    </Component>
   )
 }

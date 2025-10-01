@@ -66,10 +66,10 @@ export default function Hero() {
                 Expert assembly, premium components, and unbeatable performance.
               </p>
               <div className="flex flex-col sm:flex-row gap-8 justify-center">
-                <LiquidGlassButton variant="primary">
+                <LiquidGlassButton variant="primary" href="#contact">
                   Start Your Build
                 </LiquidGlassButton>
-                <LiquidGlassButton variant="secondary">
+                <LiquidGlassButton variant="secondary" href="#gallery">
                   View Gallery
                 </LiquidGlassButton>
               </div>

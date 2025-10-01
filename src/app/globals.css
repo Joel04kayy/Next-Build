@@ -4,7 +4,17 @@
 
 /* Custom CSS for fallback styling */
 .minimal-card {
-  @apply bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-600 p-12 transition-all duration-500 hover:border-blue-500 dark:hover:border-blue-500 rounded-3xl;
+  @apply bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-600 p-12 rounded-3xl shadow-2xl;
+  animation: gentle-bob 3s ease-in-out infinite;
+}
+
+@keyframes gentle-bob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .text-large {
@@ -54,7 +64,8 @@
   }
   
   .minimal-card {
-    @apply bg-gray-100 dark:bg-black border border-primary-200 dark:border-primary-600 p-12 transition-all duration-500 hover:border-accent-500 dark:hover:border-accent-500 rounded-3xl;
+    @apply bg-gray-100 dark:bg-black border border-primary-200 dark:border-primary-600 p-12 rounded-3xl shadow-2xl;
+    animation: gentle-bob 3s ease-in-out infinite;
   }
   
   .text-large {

@@ -194,16 +194,12 @@ export default function Services() {
         </div>
 
         {/* Active Service Details */}
-        <div className="minimal-card relative overflow-hidden group">
+        <div className="minimal-card relative overflow-hidden">
           {/* Liquid glass background - same as LiquidGlassButton */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-3xl"></div>
           <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-3xl"></div>
           
-          {/* Animated shimmer effect - same as LiquidGlassButton */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-3xl"></div>
-          </div>
           
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
               <div>
@@ -224,7 +220,7 @@ export default function Services() {
                 <div className="text-3xl font-light text-black dark:text-white mb-8">
                   {services[activeService].price}
                 </div>
-                <AnimatedButton variant="primary">
+                <AnimatedButton variant="primary" href="#contact">
                   Get Started
                 </AnimatedButton>
               </div>
