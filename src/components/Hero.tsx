@@ -25,6 +25,11 @@ export default function Hero() {
     setCurrentImage(0)
   }, [isClient, theme])
 
+  // Don't render until client-side hydration is complete
+  if (!isClient) {
+    return null
+  }
+
       return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black">
           {/* Background Image */}
