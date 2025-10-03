@@ -16,7 +16,7 @@ export default function Logo({ className = '', size = 'md' }: LogoProps) {
   return (
     <div className={`${className}`}>
       <Image
-        src="/images/Next build logo.png"
+        src="/images/logos/Next build logo.png"
         alt="Next Build Logo"
         width={size === 'sm' ? 96 : size === 'md' ? 128 : size === 'lg' ? 160 : 192}
         height={size === 'sm' ? 48 : size === 'md' ? 64 : size === 'lg' ? 80 : 96}

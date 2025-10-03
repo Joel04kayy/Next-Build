@@ -11,8 +11,8 @@ export default function Hero() {
   const { theme } = useTheme()
   
   // Different images for light and dark mode
-  const lightModeImage = '/images/LightLandingPic.jpg'
-  const darkModeImage = '/images/DarkLandingPic.jpeg'
+  const lightModeImage = '/images/hero/LightLandingPic.jpg'
+  const darkModeImage = '/images/hero/DarkLandingPic.jpeg'
 
   useEffect(() => {
     setIsClient(true)

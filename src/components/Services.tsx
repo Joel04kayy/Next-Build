@@ -63,8 +63,8 @@ export default function Services() {
       price: 'Starting at $800',
       icon: '🖥️',
       color: 'from-blue-600 to-blue-800',
-      image: '/images/CustomPCServiceCardpic1.jpg',
-      lightImage: '/images/CustomPCServiceCardpic2.jpg'
+      image: '/images/services/CustomPCServiceCardpic1.jpg',
+      lightImage: '/images/services/CustomPCServiceCardpic2.jpg'
     },
     {
       title: 'Setups',
@@ -73,8 +73,8 @@ export default function Services() {
       price: 'Starting at $300',
       icon: '🖼️',
       color: 'from-purple-600 to-purple-800',
-      image: '/images/Set up ServiceCardpic2.jpg',
-      lightImage: '/images/SetipServiceCardpic1.jpg'
+      image: '/images/services/Set up ServiceCardpic2.jpg',
+      lightImage: '/images/services/SetipServiceCardpic1.jpg'
     },
     {
       title: 'Sim Rigs',
@@ -83,8 +83,8 @@ export default function Services() {
       price: 'Starting at $1,500',
       icon: '🏎️',
       color: 'from-red-600 to-red-800',
-      image: '/images/SimRigServiceCardpic2.jpg',
-      lightImage: '/images/SimRigServiceCardpic1.jpg'
+      image: '/images/services/SimRigServiceCardpic2.jpg',
+      lightImage: '/images/services/SimRigServiceCardpic1.jpg'
     },
     {
       title: 'Repair & Upgrade',
@@ -93,8 +93,8 @@ export default function Services() {
       price: 'Starting at $50',
       icon: '🔧',
       color: 'from-green-600 to-green-800',
-      image: '/images/repairServiceCardpic1.jpg',
-      lightImage: '/images/RepairServiceCardpic2.jpg'
+      image: '/images/services/repairServiceCardpic1.jpg',
+      lightImage: '/images/services/RepairServiceCardpic2.jpg'
     }
   ]
 
