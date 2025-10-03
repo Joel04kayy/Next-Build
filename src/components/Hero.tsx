@@ -31,7 +31,7 @@ export default function Hero() {
   }
 
       return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black">
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black scroll-mt-24">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image

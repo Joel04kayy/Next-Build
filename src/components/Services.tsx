@@ -99,17 +99,29 @@ export default function Services() {
   ]
 
       return (
-        <section id="services" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#0a0a0a]">
-          {/* Liquid glass background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25"></div>
-          <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20"></div>
-          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10"></div>
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-20">
+        <section id="services" className="section-padding relative overflow-hidden bg-gray-200 dark:bg-[#0a0a0a] scroll-mt-24">
+          {/* Light mode - Liquid glass background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg dark:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25 dark:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20 dark:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10 dark:hidden"></div>
+          {/* Light mode - Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-20 dark:hidden">
             <div className="absolute top-0 left-0 w-32 h-32 bg-white/30 rounded-full -translate-x-16 -translate-y-16 blur-xl"></div>
             <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent-500/30 rounded-full translate-x-12 translate-y-12 blur-xl"></div>
             <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/20 rounded-full blur-lg"></div>
+          </div>
+
+          {/* Dark mode - Liquid glass background - exact same design as light mode */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/60 via-gray-700/70 to-gray-800/60 backdrop-blur-lg hidden dark:block"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/40 via-transparent to-accent-500/40 hidden dark:block"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-gray-600/50 via-transparent to-gray-600/50 hidden dark:block"></div>
+          <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/20 via-transparent to-accent-500/20 hidden dark:block"></div>
+          {/* Dark mode - Subtle pattern overlay - exact same design as light mode */}
+          <div className="absolute inset-0 opacity-30 hidden dark:block">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gray-600/50 rounded-full -translate-x-16 -translate-y-16 blur-xl"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent-500/50 rounded-full translate-x-12 translate-y-12 blur-xl"></div>
+            <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-gray-500/40 rounded-full blur-lg"></div>
           </div>
           {/* Content */}
           <div className="relative z-10">
@@ -273,65 +285,41 @@ export default function Services() {
                     ? 'scale-125' 
                     : 'scale-100'
                 }`}>
-                  {/* Light mode - Clear liquid glass base */}
-                  <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass layers */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-white/10 rounded-2xl dark:hidden"></div>
-                  <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/20 rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass borders */}
-                  <div className="absolute inset-0 border-2 border-white/30 rounded-2xl dark:hidden"></div>
-                  <div className="absolute inset-0 border border-white/20 rounded-2xl dark:hidden"></div>
-                  <div className="absolute inset-0 border border-white/10 rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass highlight */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-transparent rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass shimmer */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl animate-pulse dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass inner glow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/25 rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass inner shadow */}
-                  <div className="absolute inset-0 shadow-inner rounded-2xl dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass outer glow */}
-                  <div className="absolute -inset-1 bg-white/10 rounded-2xl blur-sm dark:hidden"></div>
-                  
-                  {/* Light mode - Clear liquid glass reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-2xl dark:hidden"></div>
-                  
-                  {/* Dark mode - Dark liquid glass base */}
-                  <div className="absolute inset-0 bg-gray-800/20 backdrop-blur-xl rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass layers */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-gray-700/30 via-transparent to-gray-600/20 rounded-2xl hidden dark:block"></div>
-                  <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-gray-600/20 to-gray-700/40 rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass borders */}
-                  <div className="absolute inset-0 border-2 border-gray-600/40 rounded-2xl hidden dark:block"></div>
-                  <div className="absolute inset-0 border border-gray-500/30 rounded-2xl hidden dark:block"></div>
-                  <div className="absolute inset-0 border border-gray-400/20 rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass highlight */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 via-gray-700/30 to-transparent rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass shimmer */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent rounded-2xl animate-pulse hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass inner glow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-700/30 via-transparent to-gray-600/50 rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass inner shadow */}
-                  <div className="absolute inset-0 shadow-inner rounded-2xl hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass outer glow */}
-                  <div className="absolute -inset-1 bg-gray-600/20 rounded-2xl blur-sm hidden dark:block"></div>
-                  
-                  {/* Dark mode - Dark liquid glass reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-500/40 via-transparent to-transparent rounded-2xl hidden dark:block"></div>
+                   {/* Light mode - Clear liquid glass base */}
+                   <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass layers */}
+                   <div className="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-white/10 rounded-2xl dark:hidden"></div>
+                   <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-white/10 to-white/20 rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass borders */}
+                   <div className="absolute inset-0 border-2 border-white/30 rounded-2xl dark:hidden"></div>
+                   <div className="absolute inset-0 border border-white/20 rounded-2xl dark:hidden"></div>
+                   <div className="absolute inset-0 border border-white/10 rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass highlight */}
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/15 to-transparent rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass shimmer */}
+                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl animate-pulse dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass inner glow */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/25 rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass inner shadow */}
+                   <div className="absolute inset-0 shadow-inner rounded-2xl dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass outer glow */}
+                   <div className="absolute -inset-1 bg-white/10 rounded-2xl blur-sm dark:hidden"></div>
+                   
+                   {/* Light mode - Clear liquid glass reflection */}
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-2xl dark:hidden"></div>
+
+                   {/* Dark mode - Combination: minimal-card base + liquid glass overlay */}
+                   <div className="absolute inset-0 bg-black rounded-2xl hidden dark:block"></div>
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-2xl hidden dark:block"></div>
+                   <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-2xl hidden dark:block"></div>
+                   <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-2xl hidden dark:block"></div>
                   
                   {/* Step number */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center text-lg font-bold text-gray-600 dark:text-gray-300">
