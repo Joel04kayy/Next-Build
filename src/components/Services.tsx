@@ -207,10 +207,13 @@ export default function Services() {
 
         {/* Active Service Details */}
         <div className="minimal-card relative overflow-hidden">
-          {/* Liquid glass background - same as LiquidGlassButton */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-3xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-3xl"></div>
+          {/* Light mode - Liquid glass background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl dark:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-3xl dark:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-3xl dark:hidden"></div>
+          
+          {/* Dark mode - Solid black background */}
+          <div className="absolute inset-0 bg-black rounded-3xl hidden dark:block"></div>
           
           
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
@@ -315,11 +318,8 @@ export default function Services() {
                    {/* Light mode - Clear liquid glass reflection */}
                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-2xl dark:hidden"></div>
 
-                   {/* Dark mode - Combination: minimal-card base + liquid glass overlay */}
+                   {/* Dark mode - Solid black background */}
                    <div className="absolute inset-0 bg-black rounded-2xl hidden dark:block"></div>
-                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-2xl hidden dark:block"></div>
-                   <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-2xl hidden dark:block"></div>
-                   <div className="absolute inset-0 bg-gradient-to-bl from-white/10 via-transparent to-white/10 rounded-2xl hidden dark:block"></div>
                   
                   {/* Step number */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center text-lg font-bold text-gray-600 dark:text-gray-300">

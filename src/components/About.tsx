@@ -1,8 +1,12 @@
 'use client'
 
 import AnimatedButton from './AnimatedButton'
+import Image from 'next/image'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function About() {
+  const { theme } = useTheme()
+  
   const stats = [
     { number: '500+', label: 'Computers Built' },
     { number: '5+', label: 'Years Experience' },
@@ -63,16 +67,16 @@ export default function About() {
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
           <div>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-8">
               About <span className="gradient-text">Next Build</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-black dark:text-white mb-8 leading-relaxed">
               Founded in 2019, Next Build has been at the forefront of custom computer building, 
               delivering high-performance systems tailored to our clients' specific needs. Our 
               passion for technology and commitment to excellence has made us the go-to choice 
               for gamers, professionals, and tech enthusiasts.
             </p>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
+            <p className="text-xl text-black dark:text-white mb-10 leading-relaxed">
               We believe that every computer should be built with purpose, precision, and passion. 
               From high-end gaming rigs to professional workstations, we ensure each build meets 
               the highest standards of quality and performance.
@@ -87,34 +91,63 @@ export default function About() {
             </div>
           </div>
           <div className="relative">
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-12">
-              <div className="bg-white rounded-3xl p-8 shadow-2xl">
-                <div className="w-24 h-24 bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl flex items-center justify-center mx-auto mb-8">
-                  <span className="text-white text-3xl font-bold">N</span>
+            <div className="bg-white dark:bg-black rounded-3xl p-12">
+              <div className="bg-white dark:bg-black rounded-3xl p-8">
+                <div className="w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 relative overflow-hidden">
+                  {/* Light mode - Same liquid glass background as Ready for Your Custom Build */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/40 to-white/30 backdrop-blur-lg rounded-3xl dark:hidden"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/25 via-transparent to-accent-500/25 rounded-3xl dark:hidden"></div>
+                  <div className="absolute inset-0 bg-gradient-to-bl from-white/20 via-transparent to-white/20 rounded-3xl dark:hidden"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/10 via-transparent to-accent-500/10 rounded-3xl dark:hidden"></div>
+                  {/* Light mode - Subtle pattern overlay */}
+                  <div className="absolute inset-0 opacity-20 dark:hidden">
+                    <div className="absolute top-0 left-0 w-8 h-8 bg-white/30 rounded-full -translate-x-2 -translate-y-2 blur-lg"></div>
+                    <div className="absolute bottom-0 right-0 w-6 h-6 bg-accent-500/30 rounded-full translate-x-1.5 translate-y-1.5 blur-lg"></div>
+                    <div className="absolute top-1/2 right-1/4 w-4 h-4 bg-white/20 rounded-full blur-md"></div>
+                  </div>
+                  
+                  {/* Dark mode - Same liquid glass background as Ready for Your Custom Build */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800/60 via-gray-700/70 to-gray-800/60 backdrop-blur-lg rounded-3xl hidden dark:block"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/40 via-transparent to-accent-500/40 rounded-3xl hidden dark:block"></div>
+                  <div className="absolute inset-0 bg-gradient-to-bl from-gray-600/50 via-transparent to-gray-600/50 rounded-3xl hidden dark:block"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tl from-accent-500/20 via-transparent to-accent-500/20 rounded-3xl hidden dark:block"></div>
+                  {/* Dark mode - Subtle pattern overlay */}
+                  <div className="absolute inset-0 opacity-30 hidden dark:block">
+                    <div className="absolute top-0 left-0 w-8 h-8 bg-gray-600/50 rounded-full -translate-x-2 -translate-y-2 blur-lg"></div>
+                    <div className="absolute bottom-0 right-0 w-6 h-6 bg-accent-500/50 rounded-full translate-x-1.5 translate-y-1.5 blur-lg"></div>
+                    <div className="absolute top-1/2 right-1/4 w-4 h-4 bg-gray-500/40 rounded-full blur-md"></div>
+                  </div>
+                  <Image
+                    src="/images/logos/Next Build Mini Logo.png"
+                    alt="Next Build Logo"
+                    width={60}
+                    height={60}
+                    className={`object-contain relative z-10 ${theme === 'dark' ? 'brightness-0 invert' : ''}`}
+                  />
                 </div>
-                <h3 className="text-3xl font-bold text-center text-gray-900 mb-6">
+                <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
                   Why Choose Next Build?
                 </h3>
                 <ul className="space-y-4">
-                  <li className="flex items-center text-gray-700">
+                  <li className="flex items-center text-gray-700 dark:text-gray-300">
                     <svg className="w-6 h-6 text-green-500 mr-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span className="text-lg">Professional assembly and testing</span>
                   </li>
-                  <li className="flex items-center text-gray-700">
+                  <li className="flex items-center text-gray-700 dark:text-gray-300">
                     <svg className="w-6 h-6 text-green-500 mr-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span className="text-lg">Premium component selection</span>
                   </li>
-                  <li className="flex items-center text-gray-700">
+                  <li className="flex items-center text-gray-700 dark:text-gray-300">
                     <svg className="w-6 h-6 text-green-500 mr-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span className="text-lg">Comprehensive warranty coverage</span>
                   </li>
-                  <li className="flex items-center text-gray-700">
+                  <li className="flex items-center text-gray-700 dark:text-gray-300">
                     <svg className="w-6 h-6 text-green-500 mr-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -133,14 +166,14 @@ export default function About() {
               <div className="text-6xl font-bold gradient-text mb-4">
                 {stat.number}
               </div>
-              <div className="text-gray-600 text-xl font-medium">{stat.label}</div>
+              <div className="text-black dark:text-white text-xl font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Values */}
         <div>
-          <h3 className="text-4xl font-bold text-center text-gray-900 mb-16">
+          <h3 className="text-4xl font-bold text-center text-black dark:text-white mb-16">
             Our <span className="gradient-text">Values</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -149,8 +182,8 @@ export default function About() {
                 <div className="text-7xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   {value.icon}
                 </div>
-                <h4 className="text-2xl font-semibold text-gray-900 mb-4">{value.title}</h4>
-                <p className="text-gray-600 text-lg leading-relaxed">{value.description}</p>
+                <h4 className="text-2xl font-semibold text-black dark:text-white mb-4">{value.title}</h4>
+                <p className="text-black dark:text-white text-lg leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
