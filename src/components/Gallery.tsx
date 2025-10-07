@@ -5,10 +5,30 @@ import Image from 'next/image'
 import AnimatedButton from './AnimatedButton'
 import { useTheme } from '../contexts/ThemeContext'
 
+interface Build {
+  id: number
+  title: string
+  category: string
+  image: string
+  specs: string[]
+  price: string
+  description: string
+  features: string[]
+  performance: {
+    gaming: string
+    productivity: string
+    cooling: string
+    noise: string
+  }
+  dimensions: string
+  weight: string
+  warranty: string
+}
+
 export default function Gallery() {
   const { theme } = useTheme()
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [selectedBuild, setSelectedBuild] = useState(null)
+  const [selectedBuild, setSelectedBuild] = useState<Build | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showAll, setShowAll] = useState(false)
   const [indicatorStyle, setIndicatorStyle] = useState({
@@ -61,7 +81,7 @@ export default function Gallery() {
   }
 
   // Handle build click to open modal
-  const handleBuildClick = (build) => {
+  const handleBuildClick = (build: Build) => {
     setSelectedBuild(build)
     setIsModalOpen(true)
   }
@@ -74,7 +94,7 @@ export default function Gallery() {
 
   // Handle escape key to close modal
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         handleModalClose()
       }
