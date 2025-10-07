@@ -581,7 +581,7 @@ export default function Gallery() {
           {categories.map((category, index) => (
             <button
               key={category.id}
-              ref={(el) => (buttonRefs.current[index] = el)}
+              ref={(el) => { buttonRefs.current[index] = el }}
               onClick={() => handleCategoryClick(category.id)}
               className={`relative px-8 py-4 font-medium transition-all duration-500 rounded-full overflow-hidden group z-10 ${
                 selectedCategory === category.id

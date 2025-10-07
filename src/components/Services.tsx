@@ -200,7 +200,7 @@ export default function Services() {
           {services.map((service, index) => (
             <button
               key={index}
-              ref={(el) => (buttonRefs.current[index] = el)}
+              ref={(el) => { buttonRefs.current[index] = el }}
               onClick={() => handleServiceClick(index)}
               className={`relative px-8 py-4 font-medium transition-all duration-500 rounded-full overflow-hidden group z-10 ${
                 activeService === index
