@@ -55,6 +55,22 @@ export default function Services() {
     setActiveService(index)
   }
 
+  // Function to switch to a specific service by name
+  const switchToService = (serviceName: string) => {
+    const serviceIndex = services.findIndex(service => 
+      service.title.toLowerCase() === serviceName.toLowerCase()
+    )
+    if (serviceIndex !== -1) {
+      setHasUserInteracted(true)
+      setActiveService(serviceIndex)
+    }
+  }
+
+  // Expose the function globally for footer links
+  if (typeof window !== 'undefined') {
+    (window as any).switchToService = switchToService
+  }
+
   const services = [
     {
       title: 'Custom PCs',
@@ -206,7 +222,7 @@ export default function Services() {
         </div>
 
         {/* Active Service Details */}
-        <div className="minimal-card relative overflow-hidden">
+        <div id={`service-${services[activeService].title.toLowerCase().replace(/\s+/g, '-')}`} className="minimal-card relative overflow-hidden">
           {/* Light mode - Liquid glass background */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl dark:hidden"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 via-transparent to-accent-500/5 rounded-3xl dark:hidden"></div>

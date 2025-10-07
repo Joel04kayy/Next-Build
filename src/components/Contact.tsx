@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import AnimatedButton from './AnimatedButton'
 
 export default function Contact() {
@@ -27,43 +28,64 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        budget: '',
-        message: ''
-      })
-    }, 3000)
+    try {
+      // Initialize EmailJS with your public key
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '')
+      
+      // Send email using EmailJS
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        {
+          to_email: 'joel04kayy@gmail.com',
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || 'Not provided',
+          service: formData.service || 'Not specified',
+          budget: formData.budget || 'Not specified',
+          message: formData.message,
+          subject: 'NextBuild - New Contact Form Submission'
+        }
+      )
+
+      setIsSubmitted(true)
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          budget: '',
+          message: ''
+        })
+      }, 5000)
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
     {
       icon: '📧',
       title: 'Email',
-      details: 'hello@nextbuild.com',
+      details: 'joel04kayy@gmail.com',
       description: 'Send us an email anytime'
     },
     {
       icon: '📞',
       title: 'Phone',
-      details: '+1 (555) 123-4567',
+      details: '+1 (226) 972-9634',
       description: 'Call us during business hours'
     },
     {
       icon: '📍',
       title: 'Location',
-      details: '123 Tech Street, City, State 12345',
+      details: 'Cambridge, ON, Canada',
       description: 'Visit our workshop'
     },
     {
@@ -113,8 +135,8 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Contact Form */}
-          <div className="bg-gray-100 rounded-3xl shadow-2xl p-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-8">Send us a message</h3>
+          <div className="bg-gray-100 dark:bg-[#0a0a0a] rounded-3xl shadow-2xl p-12">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Send us a message</h3>
             
             {isSubmitted ? (
               <div className="text-center py-16">
@@ -123,14 +145,14 @@ export default function Contact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h4 className="text-2xl font-semibold text-gray-900 mb-4">Message Sent!</h4>
-                <p className="text-gray-600 text-lg">We'll get back to you within 24 hours.</p>
+                <h4 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Message Sent!</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-lg">We'll get back to you within 24 hours.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       Full Name *
                     </label>
                     <input
@@ -140,12 +162,12 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       Email Address *
                     </label>
                     <input
@@ -155,7 +177,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -163,7 +185,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       Phone Number
                     </label>
                     <input
@@ -172,12 +194,12 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                       placeholder="(555) 123-4567"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       Service Needed
                     </label>
                     <select
@@ -185,7 +207,7 @@ export default function Contact() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                      className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     >
                       <option value="">Select a service</option>
                       <option value="gaming">Gaming PC</option>
@@ -197,7 +219,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-3">
+                  <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                     Budget Range
                   </label>
                   <select
@@ -205,7 +227,7 @@ export default function Contact() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                    className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   >
                     <option value="">Select budget range</option>
                     <option value="under-1000">Under $1,000</option>
@@ -217,7 +239,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                     Message *
                   </label>
                   <textarea
@@ -227,7 +249,7 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg"
+                    className="w-full px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     placeholder="Tell us about your requirements..."
                   />
                 </div>
@@ -247,47 +269,36 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-12">
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Contact Information</h3>
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-6">
                     <div className="text-4xl">{info.icon}</div>
                     <div>
-                      <h4 className="text-2xl font-semibold text-gray-900 mb-2">{info.title}</h4>
-                      <p className="text-primary-600 font-medium text-xl mb-2">{info.details}</p>
-                      <p className="text-gray-600 text-lg">{info.description}</p>
+                      <h4 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h4>
+                      <p className="text-primary-600 dark:text-primary-400 font-medium text-xl mb-2">{info.details}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-lg">{info.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-gray-200 rounded-3xl h-80 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🗺️</div>
-                <p className="text-gray-600 text-xl">Interactive map coming soon</p>
-              </div>
+            {/* Google Maps */}
+            <div className="rounded-3xl h-80 overflow-hidden shadow-2xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.1234567890123!2d-80.3144!3d43.3616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f10.1!3m3!1m2!1s0x882b8b8b8b8b8b8b%3A0x1234567890abcdef!2sCambridge%2C%20ON!5e0!3m2!1sen!2sca!4v1234567890123!5m2!1sen!2sca"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Next Build Location - Cambridge, Ontario"
+                className="rounded-3xl"
+              ></iframe>
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h4 className="text-2xl font-semibold text-gray-900 mb-6">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
-                  📘
-                </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
-                  🐦
-                </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
-                  📷
-                </a>
-                <a href="#" className="w-12 h-12 bg-gray-600 text-white rounded-2xl flex items-center justify-center hover:bg-gray-700 transition-colors text-xl">
-                  📺
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -703,7 +703,7 @@ export default function Gallery() {
               <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto text-gray-600 dark:text-white">
                 Let's create the perfect computer for your needs with professional assembly and premium components
               </p>
-              <AnimatedButton variant="secondary" className="text-lg">
+              <AnimatedButton variant="secondary" className="text-lg" href="#contact">
                 Start Your Build
               </AnimatedButton>
             </div>

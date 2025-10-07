@@ -1,27 +1,41 @@
+'use client'
+
 import Link from 'next/link'
 import Logo from './Logo'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
+  const handleServiceClick = (serviceName: string) => {
+    // Scroll to services section first
+    const servicesSection = document.getElementById('services')
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    
+    // Then switch to the specific service after a short delay
+    setTimeout(() => {
+      if (typeof window !== 'undefined' && (window as any).switchToService) {
+        (window as any).switchToService(serviceName)
+      }
+    }, 500)
+  }
+
   const footerLinks = {
     services: [
-      { name: 'Gaming PCs', href: '#services' },
-      { name: 'Workstations', href: '#services' },
-      { name: 'Custom Builds', href: '#services' },
-      { name: 'Repair & Upgrade', href: '#services' }
+      { name: 'Custom PCs', onClick: () => handleServiceClick('Custom PCs') },
+      { name: 'Setups', onClick: () => handleServiceClick('Setups') },
+      { name: 'Sim Rigs', onClick: () => handleServiceClick('Sim Rigs') },
+      { name: 'Repair & Upgrade', onClick: () => handleServiceClick('Repair & Upgrade') }
     ],
     company: [
       { name: 'About Us', href: '#about' },
-      { name: 'Our Team', href: '#about' },
-      { name: 'Gallery', href: '#gallery' },
+      { name: 'Our Builds', href: '#gallery' },
       { name: 'Testimonials', href: '#testimonials' }
     ],
     support: [
       { name: 'Contact Us', href: '#contact' },
-      { name: 'FAQ', href: '#' },
-      { name: 'Warranty', href: '#' },
-      { name: 'Support', href: '#' }
+      { name: 'Support', href: '#contact' }
     ]
   }
 
@@ -38,20 +52,6 @@ export default function Footer() {
               Professional computer building services for gaming, workstations, and custom PCs. 
               Quality builds, expert support, and unbeatable performance.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-12 h-12 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-2xl flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-xl">
-                📘
-              </a>
-              <a href="#" className="w-12 h-12 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-2xl flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-xl">
-                🐦
-              </a>
-              <a href="#" className="w-12 h-12 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-2xl flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-xl">
-                📷
-              </a>
-              <a href="#" className="w-12 h-12 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-2xl flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-xl">
-                📺
-              </a>
-            </div>
           </div>
 
           {/* Services */}
@@ -60,9 +60,12 @@ export default function Footer() {
             <ul className="space-y-4">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-600 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors text-lg">
+                  <button 
+                    onClick={link.onClick}
+                    className="text-gray-600 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors text-lg text-left"
+                  >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

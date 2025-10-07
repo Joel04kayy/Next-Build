@@ -8,7 +8,7 @@ export default function About() {
   const { theme } = useTheme()
   
   const stats = [
-    { number: '500+', label: 'Computers Built' },
+    { number: '50+', label: 'Computers Built' },
     { number: '5+', label: 'Years Experience' },
     { number: '100%', label: 'Satisfaction Rate' },
     { number: '24/7', label: 'Support Available' }
@@ -18,7 +18,7 @@ export default function About() {
     {
       icon: '🎯',
       title: 'Precision',
-      description: 'Every component is carefully selected and assembled with meticulous attention to detail.'
+      description: 'Every component is carefully selected with meticulous attention to detail.'
     },
     {
       icon: '⚡',
@@ -28,7 +28,7 @@ export default function About() {
     {
       icon: '🛡️',
       title: 'Quality',
-      description: 'We use only premium components and provide comprehensive warranties.'
+      description: 'Rigorous testing and quality assurance for flawless performance.'
     },
     {
       icon: '🤝',
@@ -71,24 +71,14 @@ export default function About() {
               About <span className="gradient-text">Next Build</span>
             </h2>
             <p className="text-xl text-black dark:text-white mb-8 leading-relaxed">
-              Founded in 2019, Next Build has been at the forefront of custom computer building, 
-              delivering high-performance systems tailored to our clients' specific needs. Our 
-              passion for technology and commitment to excellence has made us the go-to choice 
-              for gamers, professionals, and tech enthusiasts.
+              Founded in 2023, Next Build was born from a genuine passion for technology and a love for building computers. What started as a personal project soon grew into a self-started business after helping friends and peers design their own systems — from gaming rigs to professional workstations.
+            </p>
+            <p className="text-xl text-black dark:text-white mb-8 leading-relaxed">
+              Since then, we've built over 50 high-performance PCs optimized for efficiency, cooling, and aesthetics, serving gamers, creators, and professionals alike. At Next Build, every computer is crafted with purpose, precision, and passion, ensuring top-tier performance tailored to each client's unique needs.
             </p>
             <p className="text-xl text-black dark:text-white mb-10 leading-relaxed">
-              We believe that every computer should be built with purpose, precision, and passion. 
-              From high-end gaming rigs to professional workstations, we ensure each build meets 
-              the highest standards of quality and performance.
+              From initial consultation to sourcing, assembly, testing, and post-build support, we're committed to delivering systems that perform flawlessly and look incredible doing it.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <AnimatedButton variant="primary" className="text-lg">
-                Our Story
-              </AnimatedButton>
-              <AnimatedButton variant="secondary" className="text-lg">
-                Meet the Team
-              </AnimatedButton>
-            </div>
           </div>
           <div className="relative">
             <div className="bg-white dark:bg-black rounded-3xl p-12">
