@@ -254,14 +254,13 @@ export default function Contact() {
                   />
                 </div>
 
-                <AnimatedButton
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  variant="primary"
-                  className="w-full text-lg py-4"
+                  className="w-full text-lg py-4 px-6 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-2xl hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
-                </AnimatedButton>
+                </button>
               </form>
             )}
           </div>
