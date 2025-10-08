@@ -85,7 +85,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">100+</div>
+                  <div className="text-6xl font-light text-white mb-4 drop-shadow-lg">50+</div>
                   <div className="text-white/90 text-lg font-light drop-shadow-md">Computers Built</div>
                 </div>
               </div>

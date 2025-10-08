@@ -31,6 +31,7 @@ export default function Gallery() {
   const [selectedBuild, setSelectedBuild] = useState<Build | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showAll, setShowAll] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [indicatorStyle, setIndicatorStyle] = useState({
     left: 0,
     width: 0,
@@ -83,7 +84,39 @@ export default function Gallery() {
   // Handle build click to open modal
   const handleBuildClick = (build: Build) => {
     setSelectedBuild(build)
+    setCurrentImageIndex(0) // Reset to first image
     setIsModalOpen(true)
+  }
+
+  // Handle image navigation
+  const handlePreviousImage = () => {
+    let maxImages = 5 // default
+    if (selectedBuild?.id === 1) maxImages = 5 // NextBuild1 has 5 images
+    else if (selectedBuild?.id === 2) maxImages = 6 // NextBuild2 has 6 images
+    else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
+    else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
+    else if (selectedBuild?.id === 5) maxImages = 9 // NextBuild5 has 9 images
+    else if (selectedBuild?.id === 6) maxImages = 3 // NextBuild6 has 3 images
+    else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
+    else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
+    else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
+    
+    setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
+  }
+
+  const handleNextImage = () => {
+    let maxImages = 5 // default
+    if (selectedBuild?.id === 1) maxImages = 5 // NextBuild1 has 5 images
+    else if (selectedBuild?.id === 2) maxImages = 6 // NextBuild2 has 6 images
+    else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
+    else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
+    else if (selectedBuild?.id === 5) maxImages = 9 // NextBuild5 has 9 images
+    else if (selectedBuild?.id === 6) maxImages = 3 // NextBuild6 has 3 images
+    else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
+    else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
+    else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
+    
+    setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
 
   // Handle modal close
@@ -120,398 +153,273 @@ export default function Gallery() {
     // Custom PCs
     {
       id: 1,
-      title: 'Custom Mini-ITX Build',
+      title: 'High-End Gaming Build',
       category: 'custom-pcs',
-      image: 'https://picsum.photos/600/400?random=16',
-      specs: ['RTX 4060 Ti', 'i5-13400F', '16GB DDR5', '1TB NVMe'],
-      price: '$1,500',
-      description: 'Compact yet powerful custom PC built in a mini-ITX case. Perfect for space-constrained environments without compromising performance.',
+      image: '/images/builds/custom-pcs/NextBuild1-1.jpg',
+      specs: ['RTX 4080 SUPER', 'i9-13900K', '64GB DDR5-6000', '1TB NVMe'],
+      price: '$3,850',
+      description: 'The ultimate gaming and content creation powerhouse. Perfect for 4K gaming, streaming, video editing, and professional workloads. This build delivers exceptional performance for competitive gaming, content creation, and demanding productivity tasks.',
       features: [
-        'Mini-ITX Form Factor',
-        'Custom Cable Routing',
-        'Efficient Cooling',
-        'Portable Design',
-        'High Performance',
-        '2-Year Warranty'
-      ],
-      performance: {
-        gaming: '1440p High Settings',
-        productivity: 'Very Good',
-        cooling: 'Optimized Air Flow',
-        noise: 'Low Noise'
-      },
-      dimensions: '10" x 6" x 8"',
-      weight: '12 lbs',
-      warranty: '2 Years'
-    },
-    {
-      id: 2,
-      title: 'Custom RGB Build',
-      category: 'custom-pcs',
-      image: 'https://picsum.photos/600/400?random=19',
-      specs: ['RTX 4070 Ti', 'i7-13700F', '32GB DDR5', '1TB NVMe'],
-      price: '$2,200',
-      description: 'Show-stopping custom build with synchronized RGB lighting throughout. Perfect for streamers and RGB enthusiasts.',
-      features: [
-        'Synchronized RGB',
-        'Custom Cable Management',
-        'Tempered Glass',
-        'Premium Components',
-        'Custom Loop Ready',
-        '3-Year Warranty'
-      ],
-      performance: {
-        gaming: '1440p Ultra Settings',
-        productivity: 'Excellent',
-        cooling: 'RGB Liquid Cooling',
-        noise: 'Quiet with Style'
-      },
-      dimensions: '19" x 8" x 17"',
-      weight: '28 lbs',
-      warranty: '3 Years'
-    },
-    {
-      id: 3,
-      title: 'Custom Water-Cooled Build',
-      category: 'custom-pcs',
-      image: 'https://picsum.photos/600/400?random=20',
-      specs: ['RTX 4080', 'i7-13700K', '32GB DDR5', '2TB NVMe'],
-      price: '$3,500',
-      description: 'High-performance custom build with custom water cooling loop. Built for enthusiasts who demand the best cooling and aesthetics.',
-      features: [
-        'Custom Water Loop',
-        'Premium Fittings',
-        'Tempered Glass Panels',
-        'High-End Components',
-        'Silent Operation',
-        '3-Year Warranty'
+        'RTX 4080 SUPER 16GB',
+        'Intel i9-13900K 24-Core',
+        '64GB DDR5-6000 RGB',
+        'NZXT Kraken Elite 360 AIO',
+        'Vertical GPU Mount',
+        'Custom RGB Lighting',
+        'Premium Cable Management'
       ],
       performance: {
         gaming: '4K Ultra Settings',
-        productivity: 'Excellent',
-        cooling: 'Custom Water Cooling',
-        noise: 'Silent Operation'
+        productivity: 'Exceptional',
+        cooling: 'Liquid Cooling + RGB Fans',
+        noise: 'Quiet Operation'
       },
-      dimensions: '21" x 9" x 19"',
+      dimensions: '18" x 8" x 18"',
       weight: '35 lbs',
       warranty: '3 Years'
     },
     // Setups
     {
-      id: 4,
-      title: 'Streaming Setup',
+      id: 2,
+      title: 'AMD Gaming Setup',
       category: 'setups',
-      image: 'https://picsum.photos/600/400?random=17',
-      specs: ['RTX 4080', 'i7-13700K', '32GB DDR5', '2TB NVMe'],
-      price: '$3,200',
-      description: 'Complete streaming setup with professional audio equipment, dual monitors, and optimized lighting for content creation.',
+      image: '/images/builds/setups/NextBuild2-1.jpg',
+      specs: ['RTX 4070 Ti', 'Ryzen 5 7600X3D', '32GB DDR5-6000', '6.5TB Storage'],
+      price: '$3,070',
+      description: 'High-performance AMD gaming setup with massive storage capacity. Perfect for gaming, content creation, and data-intensive tasks. Features the latest Ryzen X3D technology for exceptional gaming performance and multiple storage drives for maximum capacity.',
       features: [
-        'Dual Monitor Setup',
-        'Professional Audio',
-        'Streaming Software',
-        'RGB Lighting',
-        'Webcam & Microphone',
-        '3-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Excellent',
-        cooling: 'Liquid Cooling',
-        noise: 'Silent Operation'
-      },
-      dimensions: '20" x 10" x 18"',
-      weight: '32 lbs',
-      warranty: '3 Years'
-    },
-    {
-      id: 5,
-      title: 'Gaming Setup',
-      category: 'setups',
-      image: 'https://picsum.photos/600/400?random=21',
-      specs: ['RTX 4090', 'i9-13900K', '32GB DDR5', '2TB NVMe'],
-      price: '$4,500',
-      description: 'Ultimate gaming setup with high-refresh monitor, mechanical keyboard, and gaming mouse. Perfect for competitive gaming.',
-      features: [
-        'High-Refresh Monitor',
-        'Mechanical Keyboard',
-        'Gaming Mouse',
-        'RGB Lighting',
-        'Gaming Headset',
-        '3-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Excellent',
-        cooling: 'Advanced Cooling',
-        noise: 'Quiet Operation'
-      },
-      dimensions: '22" x 11" x 20"',
-      weight: '38 lbs',
-      warranty: '3 Years'
-    },
-    {
-      id: 6,
-      title: 'Workstation Setup',
-      category: 'setups',
-      image: 'https://picsum.photos/600/400?random=22',
-      specs: ['RTX A4000', 'Xeon W-2295', '64GB ECC', '4TB NVMe'],
-      price: '$6,500',
-      description: 'Professional workstation setup for CAD work, video editing, and scientific computing. Built for reliability and performance.',
-      features: [
-        'Dual Monitor Setup',
-        'Professional GPU',
-        'ECC Memory',
-        'Ergonomic Design',
-        'Professional Audio',
-        '5-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Professional Grade',
-        cooling: 'Server-Grade Cooling',
-        noise: 'Very Quiet'
-      },
-      dimensions: '24" x 12" x 22"',
-      weight: '45 lbs',
-      warranty: '5 Years'
-    },
-    // SimRigs
-    {
-      id: 7,
-      title: 'Racing SimRig',
-      category: 'simrigs',
-      image: 'https://picsum.photos/600/400?random=18',
-      specs: ['RTX 4090', 'i9-13900K', '64GB DDR5', '2TB NVMe'],
-      price: '$4,800',
-      description: 'Professional racing simulator with triple monitor setup, force feedback wheel, and pedals. Built for serious sim racing enthusiasts.',
-      features: [
-        'Triple Monitor Setup',
-        'Force Feedback Wheel',
-        'Racing Pedals',
-        'Racing Seat',
-        'High Refresh Rate',
-        '5-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Exceptional',
-        cooling: 'Advanced Cooling',
-        noise: 'Quiet Operation'
-      },
-      dimensions: '24" x 12" x 20"',
-      weight: '45 lbs',
-      warranty: '5 Years'
-    },
-    {
-      id: 8,
-      title: 'Flight SimRig',
-      category: 'simrigs',
-      image: 'https://picsum.photos/600/400?random=23',
-      specs: ['RTX 4080', 'i7-13700K', '32GB DDR5', '2TB NVMe'],
-      price: '$3,800',
-      description: 'Complete flight simulator setup with yoke, throttle quadrant, and rudder pedals. Perfect for aviation enthusiasts and training.',
-      features: [
-        'Flight Yoke',
-        'Throttle Quadrant',
-        'Rudder Pedals',
-        'Flight Instruments',
-        'High Refresh Rate',
-        '3-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Excellent',
-        cooling: 'Liquid Cooling',
-        noise: 'Silent Operation'
-      },
-      dimensions: '26" x 14" x 22"',
-      weight: '42 lbs',
-      warranty: '3 Years'
-    },
-    {
-      id: 9,
-      title: 'Space SimRig',
-      category: 'simrigs',
-      image: 'https://picsum.photos/600/400?random=24',
-      specs: ['RTX 4090', 'i9-13900K', '64GB DDR5', '4TB NVMe'],
-      price: '$5,500',
-      description: 'Advanced space simulator with HOTAS setup, VR support, and specialized controls for space flight simulation.',
-      features: [
-        'HOTAS Setup',
-        'VR Support',
-        'Space Controls',
-        'High Refresh Rate',
-        'Professional Audio',
-        '5-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K Ultra Settings',
-        productivity: 'Exceptional',
-        cooling: 'Advanced Cooling',
-        noise: 'Silent Operation'
-      },
-      dimensions: '28" x 16" x 24"',
-      weight: '50 lbs',
-      warranty: '5 Years'
-    },
-    // Additional Custom PCs
-    {
-      id: 10,
-      title: 'Custom SFF Build',
-      category: 'custom-pcs',
-      image: 'https://picsum.photos/600/400?random=25',
-      specs: ['RTX 4070', 'i5-13600K', '16GB DDR5', '1TB NVMe'],
-      price: '$1,800',
-      description: 'Small form factor custom build optimized for performance in minimal space. Perfect for HTPC or compact gaming setups.',
-      features: [
-        'Small Form Factor',
-        'Efficient Design',
-        'High Performance',
-        'Low Power Draw',
-        'Compact Cooling',
-        '2-Year Warranty'
-      ],
-      performance: {
-        gaming: '1440p High Settings',
-        productivity: 'Very Good',
-        cooling: 'Efficient Air Cooling',
-        noise: 'Low Noise'
-      },
-      dimensions: '8" x 6" x 10"',
-      weight: '10 lbs',
-      warranty: '2 Years'
-    },
-    {
-      id: 11,
-      title: 'Custom Silent Build',
-      category: 'custom-pcs',
-      image: 'https://picsum.photos/600/400?random=26',
-      specs: ['RTX 4060 Ti', 'i5-13400F', '16GB DDR5', '1TB NVMe'],
-      price: '$1,600',
-      description: 'Whisper-quiet custom build designed for silent operation. Perfect for office environments or noise-sensitive users.',
-      features: [
-        'Silent Operation',
-        'Noctua Fans',
-        'Sound Dampening',
-        'Efficient Cooling',
-        'Low Noise Design',
-        '2-Year Warranty'
-      ],
-      performance: {
-        gaming: '1440p High Settings',
-        productivity: 'Very Good',
-        cooling: 'Silent Air Cooling',
-        noise: 'Whisper Quiet'
-      },
-      dimensions: '18" x 8" x 16"',
-      weight: '22 lbs',
-      warranty: '2 Years'
-    },
-    // Additional Setups
-    {
-      id: 12,
-      title: 'Content Creator Setup',
-      category: 'setups',
-      image: 'https://picsum.photos/600/400?random=27',
-      specs: ['RTX 4070 Ti', 'i7-13700F', '32GB DDR5', '2TB NVMe'],
-      price: '$2,800',
-      description: 'Complete content creation setup with professional lighting, audio equipment, and dual monitors for video editing and streaming.',
-      features: [
-        'Dual Monitor Setup',
-        'Professional Lighting',
-        'Audio Interface',
-        'Content Creation Software',
-        'Ergonomic Design',
-        '3-Year Warranty'
+        'RTX 4070 Ti 12GB',
+        'AMD Ryzen 5 7600X3D 6-Core',
+        '32GB DDR5-6000 RGB',
+        'be quiet! Light Loop AIO',
+        '6.5TB Total Storage',
+        '1000W Platinum PSU'
       ],
       performance: {
         gaming: '1440p Ultra Settings',
         productivity: 'Excellent',
-        cooling: 'Liquid Cooling',
-        noise: 'Quiet Operation'
+        cooling: 'Liquid Cooling + Silent Fans',
+        noise: 'Whisper Quiet'
       },
-      dimensions: '22" x 11" x 20"',
-      weight: '35 lbs',
+      dimensions: '20" x 9" x 19"',
+      weight: '32 lbs',
       warranty: '3 Years'
     },
+    // Custom PCs
     {
-      id: 13,
-      title: 'Professional Office Setup',
-      category: 'setups',
-      image: 'https://picsum.photos/600/400?random=28',
-      specs: ['RTX 4060', 'i5-13600K', '16GB DDR5', '1TB NVMe'],
-      price: '$2,200',
-      description: 'Professional office setup with ergonomic design, dual monitors, and productivity-focused peripherals for business use.',
+      id: 3,
+      title: 'AMD X3D Gaming Build',
+      category: 'custom-pcs',
+      image: '/images/builds/custom-pcs/NextBuild3-1.jpg',
+      specs: ['RX 7900 XTX', 'Ryzen 7 9800X3D', '32GB DDR5-6400', '1TB NVMe'],
+      price: '$2,500',
+      description: 'High-performance AMD gaming build featuring the latest Ryzen 7 9800X3D processor and RX 7900 XTX graphics. Perfect for 4K gaming, content creation, and competitive esports. Built in the stunning Lian Li O11 Vision Compact case with premium RGB lighting.',
       features: [
-        'Dual Monitor Setup',
-        'Ergonomic Design',
-        'Professional Audio',
-        'Productivity Software',
-        'Cable Management',
-        '2-Year Warranty'
-      ],
-      performance: {
-        gaming: '1440p High Settings',
-        productivity: 'Excellent',
-        cooling: 'Efficient Air Cooling',
-        noise: 'Low Noise'
-      },
-      dimensions: '20" x 10" x 18"',
-      weight: '28 lbs',
-      warranty: '2 Years'
-    },
-    // Additional SimRigs
-    {
-      id: 14,
-      title: 'Truck SimRig',
-      category: 'simrigs',
-      image: 'https://picsum.photos/600/400?random=29',
-      specs: ['RTX 4070', 'i7-13700K', '32GB DDR5', '2TB NVMe'],
-      price: '$3,200',
-      description: 'Professional truck simulator setup with realistic steering wheel, gear shifter, and pedals for truck driving simulation.',
-      features: [
-        'Truck Steering Wheel',
-        'Gear Shifter',
-        'Realistic Pedals',
-        'Truck Dashboard',
-        'High Refresh Rate',
-        '3-Year Warranty'
-      ],
-      performance: {
-        gaming: '4K High Settings',
-        productivity: 'Excellent',
-        cooling: 'Liquid Cooling',
-        noise: 'Quiet Operation'
-      },
-      dimensions: '26" x 14" x 22"',
-      weight: '40 lbs',
-      warranty: '3 Years'
-    },
-    {
-      id: 15,
-      title: 'Military SimRig',
-      category: 'simrigs',
-      image: 'https://picsum.photos/600/400?random=30',
-      specs: ['RTX 4080', 'i7-13700K', '32GB DDR5', '2TB NVMe'],
-      price: '$4,200',
-      description: 'Military simulation setup with specialized controls for tactical training and military vehicle simulation.',
-      features: [
-        'Military Controls',
-        'Tactical Display',
-        'Specialized Peripherals',
-        'Training Software',
-        'High Refresh Rate',
-        '3-Year Warranty'
+        'RX 7900 XTX 24GB',
+        'AMD Ryzen 7 9800X3D 8-Core',
+        '32GB DDR5-6400 RGB',
+        'Lian Li Galahad II LCD AIO',
+        'Lian Li O11 Vision Case',
+        '1000W Platinum PSU',
+        'Premium RGB Lighting',
+        'Premium Cable Management'
       ],
       performance: {
         gaming: '4K Ultra Settings',
         productivity: 'Excellent',
-        cooling: 'Advanced Cooling',
+        cooling: 'LCD AIO + RGB Fans',
         noise: 'Quiet Operation'
       },
-      dimensions: '28" x 16" x 24"',
-      weight: '48 lbs',
+      dimensions: '18" x 8" x 17"',
+      weight: '30 lbs',
       warranty: '3 Years'
+    },
+    // Custom PCs
+    {
+      id: 4,
+      title: "HYTE Y70 Touch Build",
+      category: "setups",
+      image: "/images/builds/setups/NextBuild4-1.jpg",
+      specs: [
+        "RTX 4080 SUPER 16GB",
+        "AMD Ryzen 7 7800X3D",
+        "64GB DDR5-6400",
+        "4TB NVMe SSD"
+      ],
+      price: "$3,850",
+      description: "Premium gaming build featuring the stunning HYTE Y70 Touch case with integrated touchscreen display. Perfect for content creation, streaming, and high-end gaming with exceptional performance and aesthetics.",
+      features: [
+        "HYTE Y70 Touch Case",
+        "Integrated Touch Display",
+        "RTX 4080 SUPER 16GB",
+        "AMD Ryzen 7 7800X3D",
+        "64GB DDR5-6400 Royal",
+        "NZXT Kraken Elite 360 RGB",
+        "4TB Total Storage",
+        "1000W Gold PSU",
+        "Premium RGB Fans"
+      ],
+      performance: {
+        gaming: "4K Ultra Settings",
+        productivity: "Exceptional",
+        cooling: "RGB AIO + Premium Fans",
+        noise: "Quiet Operation"
+      }
+    },
+    {
+      id: 5,
+      title: "Ultimate RTX 5090 Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild5-1.jpg",
+      specs: [
+        "RTX 5090 32GB",
+        "AMD Ryzen 7 9800X3D",
+        "64GB DDR5-6400",
+        "14TB NVMe SSD"
+      ],
+      price: "$4,200",
+      description: "The ultimate high-end gaming and content creation powerhouse featuring the latest RTX 5090 and Ryzen 7 9800X3D. This build delivers exceptional performance for 4K gaming, professional content creation, and demanding workloads with massive storage capacity.",
+      features: [
+        "RTX 5090 32GB Founders Edition",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "64GB DDR5-6400 Dominator RGB",
+        "be quiet! Light Loop AIO",
+        "14TB Total Storage (4x Samsung 990 Pro)",
+        "1200W Platinum PSU",
+        "be quiet! Light Base 600 LX",
+        "Premium RGB Lighting",
+        "Thermal Grizzly Kryonaut"
+      ],
+      performance: {
+        gaming: "4K Ultra 120fps",
+        productivity: "Exceptional",
+        cooling: "Premium AIO + Silent Fans",
+        noise: "Whisper Quiet"
+      }
+    },
+    {
+      id: 6,
+      title: "Intel RTX 4090 Build",
+      category: "setups",
+      image: "/images/builds/setups/NextBuild6-1.jpg",
+      specs: [
+        "RTX 4090 24GB",
+        "Intel Core i9-13900K",
+        "64GB DDR5-6800",
+        "2.5TB NVMe SSD"
+      ],
+      price: "$5,600",
+      description: "High-performance Intel-based gaming build featuring the powerful RTX 4090 and Intel Core i9-13900K. Perfect for 4K gaming, content creation, and professional workloads with exceptional performance and premium RGB lighting.",
+      features: [
+        "Asus ROG STRIX RTX 4090 24GB",
+        "Intel Core i9-13900K 24-Core",
+        "64GB DDR5-6800 Dominator RGB",
+        "Corsair iCUE H150i Elite LCD",
+        "2.5TB Total Storage",
+        "1200W Platinum PSU",
+        "Corsair iCUE 5000X RGB",
+        "Premium RGB Lighting",
+        "Windows 11 Pro"
+      ],
+      performance: {
+        gaming: "4K Ultra 120fps",
+        productivity: "Exceptional",
+        cooling: "LCD AIO + RGB Fans",
+        noise: "Quiet Operation"
+      }
+    },
+    {
+      id: 7,
+      title: "AMD RX 7900 XTX Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild7-1.jpg",
+      specs: [
+        "RX 7900 XTX 24GB",
+        "AMD Ryzen 7 5800X",
+        "32GB DDR4-3600",
+        "3.2TB NVMe SSD"
+      ],
+      price: "$1,600",
+      description: "High-performance AMD-based gaming build featuring the powerful RX 7900 XTX and Ryzen 7 5800X. Perfect for 1440p and 4K gaming with excellent value for money and premium RGB lighting in the Lian Li O11D EVO case.",
+      features: [
+        "Sapphire NITRO+ RX 7900 XTX 24GB",
+        "AMD Ryzen 7 5800X 8-Core",
+        "32GB DDR4-3600 Trident Z Neo",
+        "EK Nucleus AIO CR360 Dark",
+        "3.2TB Total Storage",
+        "850W Gold PSU",
+        "Lian Li O11D EVO RGB",
+        "Premium RGB Lighting",
+        "Lian Li Uni Fan SL-Infinity"
+      ],
+      performance: {
+        gaming: "1440p Ultra 120fps",
+        productivity: "Excellent",
+        cooling: "AIO + Premium Fans",
+        noise: "Quiet Operation"
+      }
+    },
+    {
+      id: 8,
+      title: "Intel RTX 3070 Gaming Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild8-1.jpg",
+      specs: [
+        "RTX 3070 8GB",
+        "Intel i9-11900K",
+        "64GB DDR4-3600",
+        "2TB NVMe SSD"
+      ],
+      price: "$811",
+      description: "High-performance Intel-based gaming build featuring the Intel Core i9-11900K and RTX 3070. Perfect for 1440p gaming and content creation with excellent cooling and RGB lighting in the CiT DS360 case.",
+      features: [
+        "MSI RTX 3070 VENTUS 3X OC 8GB",
+        "Intel Core i9-11900K 8-Core",
+        "64GB DDR4-3600 Vengeance RGB Pro",
+        "Thermalright Frozen Notte ARGB V2 AIO",
+        "2TB Kingston NV3 NVMe SSD",
+        "650W Bronze PSU",
+        "CiT DS360 ATX Case",
+        "Premium RGB Lighting",
+        "Multiple Thermalright Fans"
+      ],
+      performance: {
+        gaming: "1440p Ultra Settings",
+        productivity: "Excellent",
+        cooling: "Liquid Cooling + RGB Fans",
+        noise: "Quiet Operation"
+      }
+    },
+    {
+      id: 9,
+      title: "AMD RTX 5080 Ultimate Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild9-1.jpg",
+      specs: [
+        "RTX 5080 16GB",
+        "AMD Ryzen 7 9800X3D",
+        "64GB DDR5-6000",
+        "4TB NVMe SSD"
+      ],
+      price: "$2,994",
+      description: "The ultimate high-end gaming and content creation powerhouse featuring the latest AMD Ryzen 7 9800X3D and RTX 5080. This build delivers exceptional performance for 4K gaming, professional content creation, and demanding workloads with premium components and stunning RGB lighting.",
+      features: [
+        "Asus ROG Astral OC RTX 5080 16GB",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "64GB DDR5-6000 Trident Z5 Neo RGB",
+        "Lian Li Hydroshift LCD 360S AIO",
+        "4TB Total Storage (2x Samsung 990 EVO Plus)",
+        "1000W Platinum PSU",
+        "Lian Li O11 Vision Compact",
+        "Premium RGB Lighting",
+        "WiFi 7 Connectivity"
+      ],
+      performance: {
+        gaming: "4K Ultra 144fps",
+        productivity: "Exceptional",
+        cooling: "LCD AIO + Premium Fans",
+        noise: "Whisper Quiet"
+      }
     }
   ]
 
@@ -651,16 +559,32 @@ export default function Gallery() {
                 </div>
               </div>
               <div className="p-8 relative z-10">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{build.title}</h3>
-                <div className="space-y-3 mb-6">
-                  {build.specs.map((spec, index) => (
-                    <div key={index} className="flex items-center text-gray-600 dark:text-gray-300">
-                      <svg className="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-lg">{spec}</span>
-                    </div>
-                  ))}
+                {/* Category Badge */}
+                <div className="mb-6">
+                  <div className="inline-block bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">
+                    {categories.find(cat => cat.id === build.category)?.name || build.category}
+                  </div>
+                </div>
+
+
+                {/* Key Components */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <span className="text-xs font-medium truncate">CPU: {build.specs[1]}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <span className="text-xs font-medium truncate">GPU: {build.specs[0]}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <span className="text-xs font-medium truncate">RAM: {build.specs[2]}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600 dark:text-gray-300">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2 flex-shrink-0"></div>
+                    <span className="text-xs font-medium truncate">Storage: {build.specs[3]}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -676,7 +600,7 @@ export default function Gallery() {
                 className="text-lg px-8 py-4"
                 onClick={handleViewMore}
               >
-                View More Builds
+                View More
               </AnimatedButton>
             ) : (
               <AnimatedButton 
@@ -767,66 +691,100 @@ export default function Gallery() {
             </div>
 
             <div className="flex flex-row h-full relative z-10">
-              {/* Image Section - Left Side with Scrollable Photos */}
+              {/* Image Section - Left Side with Navigation */}
               <div className="relative w-1/2 h-full overflow-hidden bg-white dark:bg-gray-800">
-                <div className="flex h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                  {/* Main build image */}
-                  <div className="relative min-w-full h-full snap-center">
-                    <Image
-                      src={selectedBuild.image}
-                      alt={selectedBuild.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute top-6 left-6 bg-primary-600 text-white px-4 py-2 rounded-2xl text-lg font-semibold shadow-lg">
-                      {selectedBuild.price}
-                    </div>
+                {/* Current Image */}
+                <div className="relative w-full h-full">
+                  <Image
+                    src={selectedBuild.category === 'setups' 
+                      ? selectedBuild.id === 4
+                        ? `/images/builds/setups/NextBuild4-${currentImageIndex + 1}.jpg`
+                        : selectedBuild.id === 6
+                          ? `/images/builds/setups/NextBuild6-${currentImageIndex + 1}.jpg`
+                          : `/images/builds/setups/NextBuild2-${currentImageIndex + 1}.jpg`
+                      : selectedBuild.id === 3
+                        ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
+                        : selectedBuild.id === 5
+                          ? `/images/builds/custom-pcs/NextBuild5-${currentImageIndex + 1}.jpg`
+                          : selectedBuild.id === 7
+                            ? `/images/builds/custom-pcs/NextBuild7-${currentImageIndex + 1}.jpg`
+                            : selectedBuild.id === 8
+                              ? `/images/builds/custom-pcs/NextBuild8-${currentImageIndex + 1}.jpg`
+                              : selectedBuild.id === 9
+                                ? `/images/builds/custom-pcs/NextBuild9-${currentImageIndex + 1}.jpg`
+                                : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
+                    }
+                    alt={`${selectedBuild.title} - Photo ${currentImageIndex + 1}`}
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute top-6 left-6 bg-primary-600 text-white px-4 py-2 rounded-2xl text-lg font-semibold shadow-lg">
+                    {selectedBuild.price}
                   </div>
                   
-                  {/* Additional build photos */}
-                  <div className="relative min-w-full h-full snap-center">
-                    <Image
-                      src="https://picsum.photos/800/600?random=20"
-                      alt={`${selectedBuild.title} - Side View`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-6 left-6 bg-black/50 text-white px-4 py-2 rounded-2xl text-sm font-semibold backdrop-blur-sm">
-                      Side View
-                    </div>
-                  </div>
-                  
-                  <div className="relative min-w-full h-full snap-center">
-                    <Image
-                      src="https://picsum.photos/800/600?random=21"
-                      alt={`${selectedBuild.title} - Interior`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-6 left-6 bg-black/50 text-white px-4 py-2 rounded-2xl text-sm font-semibold backdrop-blur-sm">
-                      Interior View
-                    </div>
-                  </div>
-                  
-                  <div className="relative min-w-full h-full snap-center">
-                    <Image
-                      src="https://picsum.photos/800/600?random=22"
-                      alt={`${selectedBuild.title} - RGB Lighting`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-6 left-6 bg-black/50 text-white px-4 py-2 rounded-2xl text-sm font-semibold backdrop-blur-sm">
-                      RGB Lighting
-                    </div>
+                  {/* Image Counter */}
+                  <div className="absolute top-6 right-6 bg-black/50 text-white px-3 py-2 rounded-2xl text-sm font-semibold backdrop-blur-sm">
+                    {currentImageIndex + 1} / {
+                      selectedBuild.id === 1 ? 5 : // NextBuild1 has 5 images
+                      selectedBuild.id === 2 ? 6 : // NextBuild2 has 6 images
+                      selectedBuild.id === 3 ? 3 : // NextBuild3 has 3 images
+                      selectedBuild.id === 4 ? 2 : // NextBuild4 has 2 images
+                      selectedBuild.id === 5 ? 9 : // NextBuild5 has 9 images
+                      selectedBuild.id === 6 ? 3 : // NextBuild6 has 3 images
+                      selectedBuild.id === 7 ? 8 : // NextBuild7 has 8 images
+                      selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
+                      selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
+                      5 // default fallback
+                    }
                   </div>
                 </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={handlePreviousImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                  aria-label="Previous image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
                 
-                {/* Scroll indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  <div className="w-2 h-2 bg-white/80 rounded-full"></div>
-                  <div className="w-2 h-2 bg-white/40 rounded-full"></div>
-                  <div className="w-2 h-2 bg-white/40 rounded-full"></div>
-                  <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110"
+                  aria-label="Next image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Image Dots Indicator */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {Array.from({ 
+                    length: selectedBuild.id === 1 ? 5 : // NextBuild1 has 5 images
+                    selectedBuild.id === 2 ? 6 : // NextBuild2 has 6 images
+                    selectedBuild.id === 3 ? 3 : // NextBuild3 has 3 images
+                    selectedBuild.id === 4 ? 2 : // NextBuild4 has 2 images
+                    selectedBuild.id === 5 ? 9 : // NextBuild5 has 9 images
+                    selectedBuild.id === 6 ? 3 : // NextBuild6 has 3 images
+                    selectedBuild.id === 7 ? 8 : // NextBuild7 has 8 images
+                    selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
+                    selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
+                    5 // default fallback
+                  }, (_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === currentImageIndex
+                          ? 'bg-primary-600 scale-125'
+                          : 'bg-white/50 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -840,84 +798,46 @@ export default function Gallery() {
                   {selectedBuild.description}
                 </p>
 
-                {/* Specifications */}
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Specifications</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {selectedBuild.specs.map((spec, index) => (
-                      <div key={index} className="flex items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
-                        <svg className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-900 dark:text-white font-medium">{spec}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Features */}
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Features</h3>
-                  <div className="space-y-3">
+                  <ul className="space-y-3">
                     {selectedBuild.features.map((feature, index) => (
-                      <div key={index} className="flex items-center">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-4"></div>
+                      <li key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-primary-600 rounded-full mr-4 mt-2 flex-shrink-0"></div>
                         <span className="text-gray-600 dark:text-gray-300 text-lg">{feature}</span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                {/* Performance & Details */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Performance</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Gaming:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.gaming}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Productivity:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.productivity}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Cooling:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.cooling}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Noise:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.noise}</span>
-                      </div>
+                {/* Performance */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Performance</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-300">Gaming:</span>
+                      <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.gaming}</span>
                     </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Physical Details</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Dimensions:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.dimensions}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Weight:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.weight}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300">Warranty:</span>
-                        <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.warranty}</span>
-                      </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-300">Productivity:</span>
+                      <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.productivity}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-300">Cooling:</span>
+                      <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.cooling}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-300">Noise:</span>
+                      <span className="text-gray-900 dark:text-white font-medium">{selectedBuild.performance.noise}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <AnimatedButton variant="primary" className="flex-1 text-lg">
+                {/* Action Button */}
+                <div className="flex justify-center">
+                  <AnimatedButton variant="primary" className="w-full max-w-md text-lg">
                     Get This Build
-                  </AnimatedButton>
-                  <AnimatedButton variant="secondary" className="flex-1 text-lg">
-                    Customize
                   </AnimatedButton>
                 </div>
               </div>
