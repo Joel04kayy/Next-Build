@@ -264,7 +264,10 @@ export default function Gallery() {
         productivity: "Exceptional",
         cooling: "RGB AIO + Premium Fans",
         noise: "Quiet Operation"
-      }
+      },
+      dimensions: "20\" x 9\" x 19\"",
+      weight: "35 lbs",
+      warranty: "3 Years"
     },
     {
       id: 5,
@@ -295,7 +298,10 @@ export default function Gallery() {
         productivity: "Exceptional",
         cooling: "Premium AIO + Silent Fans",
         noise: "Whisper Quiet"
-      }
+      },
+      dimensions: "18\" x 8\" x 18\"",
+      weight: "38 lbs",
+      warranty: "3 Years"
     },
     {
       id: 6,
@@ -326,7 +332,10 @@ export default function Gallery() {
         productivity: "Exceptional",
         cooling: "LCD AIO + RGB Fans",
         noise: "Quiet Operation"
-      }
+      },
+      dimensions: "20\" x 9\" x 19\"",
+      weight: "36 lbs",
+      warranty: "3 Years"
     },
     {
       id: 7,
@@ -357,7 +366,10 @@ export default function Gallery() {
         productivity: "Excellent",
         cooling: "AIO + Premium Fans",
         noise: "Quiet Operation"
-      }
+      },
+      dimensions: "18\" x 8\" x 17\"",
+      weight: "30 lbs",
+      warranty: "3 Years"
     },
     {
       id: 8,
