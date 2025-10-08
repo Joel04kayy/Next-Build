@@ -388,7 +388,10 @@ export default function Gallery() {
         productivity: "Excellent",
         cooling: "Liquid Cooling + RGB Fans",
         noise: "Quiet Operation"
-      }
+      },
+      dimensions: "18\" x 8\" x 17\"",
+      weight: "28 lbs",
+      warranty: "3 Years"
     },
     {
       id: 9,
@@ -419,7 +422,10 @@ export default function Gallery() {
         productivity: "Exceptional",
         cooling: "LCD AIO + Premium Fans",
         noise: "Whisper Quiet"
-      }
+      },
+      dimensions: "18\" x 8\" x 17\"",
+      weight: "32 lbs",
+      warranty: "3 Years"
     }
   ]
 
