@@ -953,7 +953,9 @@ export default function Gallery() {
                             ? `/images/builds/custom-pcs/NextBuild11-${currentImageIndex + 1}.jpg`
                             : selectedBuild.id === 13
                               ? `/images/builds/custom-pcs/NextBuild13-${currentImageIndex + 1}.jpg`
-                              : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
+                              : selectedBuild.id === 15
+                                ? `/images/builds/custom-pcs/NextBuild15-${currentImageIndex + 1}.jpg`
+                                : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
                       : selectedBuild.id === 3
                         ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 5
