@@ -105,6 +105,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
     else if (selectedBuild?.id === 14) maxImages = 7 // NextBuild14 has 7 images
+    else if (selectedBuild?.id === 15) maxImages = 7 // NextBuild15 has 7 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -125,6 +126,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
     else if (selectedBuild?.id === 14) maxImages = 7 // NextBuild14 has 7 images
+    else if (selectedBuild?.id === 15) maxImages = 7 // NextBuild15 has 7 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -631,6 +633,41 @@ export default function Gallery() {
       dimensions: "17\" x 8\" x 16\"",
       weight: "28 lbs",
       warranty: "3 Years"
+    },
+    {
+      id: 15,
+      title: "Corsair Link X870E Full Setup",
+      category: "setups",
+      image: "/images/builds/custom-pcs/NextBuild15-1.jpg",
+      specs: [
+        "Radeon RX 9070 XT 16GB",
+        "AMD Ryzen 7 9800X3D",
+        "64GB DDR5-6000",
+        "12TB NVMe SSD"
+      ],
+      price: "$5,854.41",
+      description: "Enthusiast Corsair iCUE Link ecosystem setup powered by Ryzen 7 9800X3D and Sapphire NITRO+ RX 9070 XT. Massive 12TB NVMe storage, premium X870E HERO platform, and extensive RGB cooling in the Corsair 6500X case.",
+      features: [
+        "Sapphire NITRO+ RX 9070 XT 16GB",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "64GB Corsair Dominator Titanium DDR5-6000",
+        "Corsair iCUE LINK TITAN 360 RX LCD AIO",
+        "Corsair HX1500i 1500W Platinum PSU",
+        "12TB NVMe (2x 990 Pro 4TB + 9100 Pro 4TB)",
+        "Corsair 6500X Case",
+        "Corsair iCUE LINK LX120/LX140 RGB Fans",
+        "Samsung Odyssey G8 34\" 175Hz Monitor",
+        "Windows 11 Pro"
+      ],
+      performance: {
+        gaming: "Ultrawide 1440p 175Hz",
+        productivity: "Workstation-Class",
+        cooling: "360mm LCD AIO + iCUE LINK",
+        noise: "Quiet"
+      },
+      dimensions: "Full Setup Configuration",
+      weight: "Complete Setup",
+      warranty: "3 Years"
     }
   ]
 
@@ -933,7 +970,9 @@ export default function Gallery() {
                                 ? `/images/builds/custom-pcs/NextBuild12-${currentImageIndex + 1}.jpg`
                                 : selectedBuild.id === 14
                                   ? `/images/builds/custom-pcs/NextBuild14-${currentImageIndex + 1}.jpg`
-                                  : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
+                                  : selectedBuild.id === 15
+                                    ? `/images/builds/custom-pcs/NextBuild15-${currentImageIndex + 1}.jpg`
+                                    : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
                     }
                     alt={`${selectedBuild.title} - Photo ${currentImageIndex + 1}`}
                     fill
@@ -960,6 +999,7 @@ export default function Gallery() {
                       selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                       selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
                       selectedBuild.id === 14 ? 7 : // NextBuild14 has 7 images
+                      selectedBuild.id === 15 ? 7 : // NextBuild15 has 7 images
                       5 // default fallback
                     }
                   </div>
@@ -1003,6 +1043,7 @@ export default function Gallery() {
                     selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                     selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
                     selectedBuild.id === 14 ? 7 : // NextBuild14 has 7 images
+                    selectedBuild.id === 15 ? 7 : // NextBuild15 has 7 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
