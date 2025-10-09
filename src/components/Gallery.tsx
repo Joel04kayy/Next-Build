@@ -100,6 +100,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
+    else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -115,6 +116,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
+    else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -438,6 +440,41 @@ export default function Gallery() {
       dimensions: "18\" x 8\" x 17\"",
       weight: "32 lbs",
       warranty: "3 Years"
+    },
+    {
+      id: 10,
+      title: "Intel RTX 5070 Ti Premium Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild10-1.jpg",
+      specs: [
+        "RTX 5070 Ti 16GB",
+        "Intel i7-14700K",
+        "32GB DDR5-6000",
+        "2TB NVMe SSD"
+      ],
+      price: "$2,106",
+      description: "Premium Intel-based gaming and content creation build featuring the Intel Core i7-14700K and RTX 5070 Ti. This high-end configuration delivers exceptional performance for 1440p and 4K gaming with premium Lian Li components, wireless RGB fans, and a stunning secondary display.",
+      features: [
+        "PNY OC GeForce RTX 5070 Ti 16GB",
+        "Intel Core i7-14700K 20-Core",
+        "32GB DDR5-6000 Vengeance RGB",
+        "TRYX PANORAMA SE ARGB 360mm AIO",
+        "2TB Samsung 990 Pro NVMe SSD",
+        "1000W Lian Li EDGE Platinum PSU",
+        "Lian Li O11 VISION COMPACT Case",
+        "Wireless Lian Li UNI Fan TL RGB",
+        "8.8\" Secondary Display",
+        "Lian Li Strimer Wireless Cables"
+      ],
+      performance: {
+        gaming: "4K Ultra 120fps",
+        productivity: "Excellent",
+        cooling: "360mm AIO + Wireless RGB Fans",
+        noise: "Silent Operation"
+      },
+      dimensions: "17\" x 8\" x 16\"",
+      weight: "28 lbs",
+      warranty: "3 Years"
     }
   ]
 
@@ -730,7 +767,9 @@ export default function Gallery() {
                               ? `/images/builds/custom-pcs/NextBuild8-${currentImageIndex + 1}.jpg`
                               : selectedBuild.id === 9
                                 ? `/images/builds/custom-pcs/NextBuild9-${currentImageIndex + 1}.jpg`
-                                : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
+                                : selectedBuild.id === 10
+                                  ? `/images/builds/custom-pcs/NextBuild10-${currentImageIndex + 1}.jpg`
+                                  : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
                     }
                     alt={`${selectedBuild.title} - Photo ${currentImageIndex + 1}`}
                     fill
@@ -752,6 +791,7 @@ export default function Gallery() {
                       selectedBuild.id === 7 ? 8 : // NextBuild7 has 8 images
                       selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
                       selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
+                      selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                       5 // default fallback
                     }
                   </div>
@@ -790,6 +830,7 @@ export default function Gallery() {
                     selectedBuild.id === 7 ? 8 : // NextBuild7 has 8 images
                     selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
                     selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
+                    selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
