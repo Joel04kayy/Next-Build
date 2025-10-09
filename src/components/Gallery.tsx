@@ -102,6 +102,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
+    else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -119,6 +120,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
+    else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -516,6 +518,43 @@ export default function Gallery() {
       dimensions: "45\" Monitor + Full Desk Setup",
       weight: "Complete Setup",
       warranty: "3 Years"
+    },
+    {
+      id: 12,
+      title: "AMD RTX 5080 Royal Build",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild12-1.jpg",
+      specs: [
+        "RTX 5080 16GB",
+        "AMD Ryzen 7 9800X3D",
+        "64GB DDR5-6000",
+        "4TB NVMe SSD"
+      ],
+      price: "$3,214",
+      description: "Premium AMD-based gaming and content creation build featuring the latest AMD Ryzen 7 9800X3D and RTX 5080. This high-end configuration delivers exceptional performance for 4K gaming and professional workloads with premium Lian Li components, wireless LCD fans, and a secondary display.",
+      features: [
+        "Zotac Solid OC GeForce RTX 5080 16GB",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "64GB DDR5-6000 Trident Z5 Royal Neo RGB",
+        "TRYX PANORAMA SE ARGB 360mm AIO",
+        "4TB Crucial T500 NVMe SSD",
+        "1000W Lian Li EDGE Platinum PSU",
+        "Lian Li O11 VISION COMPACT Case",
+        "Lian Li UNI FAN TL LCD Wireless RGB",
+        "8.8\" TURZX Secondary Display",
+        "Gigabyte X870E AORUS PRO ICE Motherboard",
+        "Premium RGB Lighting",
+        "Wireless Fan Control"
+      ],
+      performance: {
+        gaming: "4K Ultra 144fps",
+        productivity: "Exceptional",
+        cooling: "360mm AIO + LCD RGB Fans",
+        noise: "Whisper Quiet"
+      },
+      dimensions: "17\" x 8\" x 16\"",
+      weight: "28 lbs",
+      warranty: "3 Years"
     }
   ]
 
@@ -810,9 +849,11 @@ export default function Gallery() {
                               ? `/images/builds/custom-pcs/NextBuild8-${currentImageIndex + 1}.jpg`
                               : selectedBuild.id === 9
                                 ? `/images/builds/custom-pcs/NextBuild9-${currentImageIndex + 1}.jpg`
-                                : selectedBuild.id === 10
-                                  ? `/images/builds/custom-pcs/NextBuild10-${currentImageIndex + 1}.jpg`
-                                  : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
+                            : selectedBuild.id === 10
+                              ? `/images/builds/custom-pcs/NextBuild10-${currentImageIndex + 1}.jpg`
+                              : selectedBuild.id === 12
+                                ? `/images/builds/custom-pcs/NextBuild12-${currentImageIndex + 1}.jpg`
+                                : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
                     }
                     alt={`${selectedBuild.title} - Photo ${currentImageIndex + 1}`}
                     fill
@@ -836,6 +877,7 @@ export default function Gallery() {
                       selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
                       selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                       selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
+                      selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                       5 // default fallback
                     }
                   </div>
@@ -876,6 +918,7 @@ export default function Gallery() {
                     selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
                     selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                     selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
+                    selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
