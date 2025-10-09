@@ -183,7 +183,7 @@ export default function Gallery() {
       id: 2,
       title: 'AMD Gaming Setup',
       category: 'setups',
-      image: '/images/builds/setups/NextBuild2-1.jpg',
+      image: '/images/builds/custom-pcs/NextBuild2-1.jpg',
       specs: ['RTX 4070 Ti', 'Ryzen 5 7600X3D', '32GB DDR5-6000', '6.5TB Storage'],
       price: '$3,070',
       description: 'High-performance AMD gaming setup with massive storage capacity. Perfect for gaming, content creation, and data-intensive tasks. Features the latest Ryzen X3D technology for exceptional gaming performance and multiple storage drives for maximum capacity.',
@@ -239,7 +239,7 @@ export default function Gallery() {
       id: 4,
       title: "HYTE Y70 Touch Build",
       category: "setups",
-      image: "/images/builds/setups/NextBuild4-1.jpg",
+      image: "/images/builds/custom-pcs/NextBuild4-1.jpg",
       specs: [
         "RTX 4080 SUPER 16GB",
         "AMD Ryzen 7 7800X3D",
@@ -307,7 +307,7 @@ export default function Gallery() {
       id: 6,
       title: "Intel RTX 4090 Build",
       category: "setups",
-      image: "/images/builds/setups/NextBuild6-1.jpg",
+      image: "/images/builds/custom-pcs/NextBuild6-1.jpg",
       specs: [
         "RTX 4090 24GB",
         "Intel Core i9-13900K",
@@ -716,10 +716,10 @@ export default function Gallery() {
                   <Image
                     src={selectedBuild.category === 'setups' 
                       ? selectedBuild.id === 4
-                        ? `/images/builds/setups/NextBuild4-${currentImageIndex + 1}.jpg`
+                        ? `/images/builds/custom-pcs/NextBuild4-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 6
-                          ? `/images/builds/setups/NextBuild6-${currentImageIndex + 1}.jpg`
-                          : `/images/builds/setups/NextBuild2-${currentImageIndex + 1}.jpg`
+                          ? `/images/builds/custom-pcs/NextBuild6-${currentImageIndex + 1}.jpg`
+                          : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
                       : selectedBuild.id === 3
                         ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 5
