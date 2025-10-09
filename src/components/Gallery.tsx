@@ -103,6 +103,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
+    else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -121,6 +122,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
+    else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -555,6 +557,43 @@ export default function Gallery() {
       dimensions: "17\" x 8\" x 16\"",
       weight: "28 lbs",
       warranty: "3 Years"
+    },
+    {
+      id: 13,
+      title: "AMD RTX 5070 Ti White Setup",
+      category: "setups",
+      image: "/images/builds/custom-pcs/NextBuild13-1.jpg",
+      specs: [
+        "RTX 5070 Ti 16GB",
+        "AMD Ryzen 7 9800X3D",
+        "32GB DDR5-6400",
+        "2TB NVMe SSD"
+      ],
+      price: "$2,472",
+      description: "Premium white-themed gaming setup featuring the AMD Ryzen 7 9800X3D and RTX 5070 Ti. This elegant configuration combines high-performance components with a stunning white aesthetic, featuring the HYTE Y70 case, Thermalright cooling, and custom white cable extensions for a clean, modern look.",
+      features: [
+        "Gigabyte AERO OC GeForce RTX 5070 Ti 16GB",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "32GB DDR5-6400 KLEVV CRAS V RGB",
+        "Thermalright Wonder Vision 360 UB RGB White AIO",
+        "2TB Patriot Viper VP4300 NVMe SSD",
+        "850W ASRock Steel Legend PSU",
+        "HYTE Y70 ATX Mid Tower Case",
+        "Thermalright TL-C12CW-S White ARGB Fans",
+        "Thermalright ARGB and Fan Hub",
+        "White Braided Cable Extensions",
+        "Gigabyte B650 AERO G Motherboard",
+        "Windows 11 Home Retail"
+      ],
+      performance: {
+        gaming: "4K Ultra 120fps",
+        productivity: "Excellent",
+        cooling: "360mm AIO + White ARGB Fans",
+        noise: "Quiet Operation"
+      },
+      dimensions: "Full Setup Configuration",
+      weight: "Complete Setup",
+      warranty: "3 Years"
     }
   ]
 
@@ -838,7 +877,9 @@ export default function Gallery() {
                           ? `/images/builds/custom-pcs/NextBuild6-${currentImageIndex + 1}.jpg`
                           : selectedBuild.id === 11
                             ? `/images/builds/custom-pcs/NextBuild11-${currentImageIndex + 1}.jpg`
-                            : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
+                            : selectedBuild.id === 13
+                              ? `/images/builds/custom-pcs/NextBuild13-${currentImageIndex + 1}.jpg`
+                              : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
                       : selectedBuild.id === 3
                         ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 5
@@ -878,6 +919,7 @@ export default function Gallery() {
                       selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                       selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                       selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
+                      selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
                       5 // default fallback
                     }
                   </div>
@@ -919,6 +961,7 @@ export default function Gallery() {
                     selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
                     selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                     selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
+                    selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
