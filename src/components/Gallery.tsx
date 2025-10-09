@@ -101,6 +101,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
+    else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -117,6 +118,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
     else if (selectedBuild?.id === 10) maxImages = 2 // NextBuild10 has 2 images
+    else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -475,6 +477,45 @@ export default function Gallery() {
       dimensions: "17\" x 8\" x 16\"",
       weight: "28 lbs",
       warranty: "3 Years"
+    },
+    {
+      id: 11,
+      title: "AMD RTX 4090 Lamborghini Setup",
+      category: "setups",
+      image: "/images/builds/custom-pcs/NextBuild11-1.jpg",
+      specs: [
+        "RTX 4090 24GB",
+        "AMD Ryzen 7 7800X3D",
+        "64GB DDR5-6000",
+        "4TB NVMe SSD"
+      ],
+      price: "$6,241",
+      description: "Ultimate Lamborghini-themed gaming setup featuring the AMD Ryzen 7 7800X3D and liquid-cooled RTX 4090. This premium configuration includes a complete gaming ecosystem with 45\" curved monitor, SteelSeries peripherals, and exclusive Lamborghini edition furniture for the ultimate gaming experience.",
+      features: [
+        "MSI SUPRIM LIQUID X RTX 4090 24GB",
+        "AMD Ryzen 7 7800X3D 8-Core",
+        "64GB DDR5-6000 Trident Z5 Neo",
+        "Deepcool MYSTIQUE 360 AIO",
+        "4TB Total Storage (2TB P3 Plus + 2TB MP700 PRO)",
+        "1300W MSI MEG Ai1300P Platinum PSU",
+        "Lian Li O11D EVO RGB Lamborghini Case",
+        "LG 45GR95QE-B 45\" 240Hz Curved Monitor",
+        "SteelSeries Apex Pro TKL Keyboard",
+        "SteelSeries Rival 5 Mouse",
+        "SecretLab Lamborghini Special Edition Chair",
+        "SecretLab Magnus Pro Desk - Lamborghini Edition",
+        "Lian Li Uni Fan SL-Infinity RGB Fans",
+        "Windows 11 Home"
+      ],
+      performance: {
+        gaming: "4K Ultra 120fps+",
+        productivity: "Exceptional",
+        cooling: "Liquid GPU + 360mm AIO",
+        noise: "Whisper Quiet"
+      },
+      dimensions: "45\" Monitor + Full Desk Setup",
+      weight: "Complete Setup",
+      warranty: "3 Years"
     }
   ]
 
@@ -756,7 +797,9 @@ export default function Gallery() {
                         ? `/images/builds/custom-pcs/NextBuild4-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 6
                           ? `/images/builds/custom-pcs/NextBuild6-${currentImageIndex + 1}.jpg`
-                          : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
+                          : selectedBuild.id === 11
+                            ? `/images/builds/custom-pcs/NextBuild11-${currentImageIndex + 1}.jpg`
+                            : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
                       : selectedBuild.id === 3
                         ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 5
@@ -792,6 +835,7 @@ export default function Gallery() {
                       selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
                       selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
                       selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
+                      selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                       5 // default fallback
                     }
                   </div>
@@ -831,6 +875,7 @@ export default function Gallery() {
                     selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
                     selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
                     selectedBuild.id === 10 ? 2 : // NextBuild10 has 2 images
+                    selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
