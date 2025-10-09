@@ -91,7 +91,7 @@ export default function Gallery() {
   // Handle image navigation
   const handlePreviousImage = () => {
     let maxImages = 5 // default
-    if (selectedBuild?.id === 1) maxImages = 5 // NextBuild1 has 5 images
+    if (selectedBuild?.id === 1) maxImages = 4 // NextBuild1 has 4 images
     else if (selectedBuild?.id === 2) maxImages = 6 // NextBuild2 has 6 images
     else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
     else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
@@ -106,7 +106,7 @@ export default function Gallery() {
 
   const handleNextImage = () => {
     let maxImages = 5 // default
-    if (selectedBuild?.id === 1) maxImages = 5 // NextBuild1 has 5 images
+    if (selectedBuild?.id === 1) maxImages = 4 // NextBuild1 has 4 images
     else if (selectedBuild?.id === 2) maxImages = 6 // NextBuild2 has 6 images
     else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
     else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
@@ -743,7 +743,7 @@ export default function Gallery() {
                   {/* Image Counter */}
                   <div className="absolute top-6 right-6 bg-black/50 text-white px-3 py-2 rounded-2xl text-sm font-semibold backdrop-blur-sm">
                     {currentImageIndex + 1} / {
-                      selectedBuild.id === 1 ? 5 : // NextBuild1 has 5 images
+                      selectedBuild.id === 1 ? 4 : // NextBuild1 has 4 images
                       selectedBuild.id === 2 ? 6 : // NextBuild2 has 6 images
                       selectedBuild.id === 3 ? 3 : // NextBuild3 has 3 images
                       selectedBuild.id === 4 ? 2 : // NextBuild4 has 2 images
@@ -781,7 +781,7 @@ export default function Gallery() {
                 {/* Image Dots Indicator */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
                   {Array.from({ 
-                    length: selectedBuild.id === 1 ? 5 : // NextBuild1 has 5 images
+                    length: selectedBuild.id === 1 ? 4 : // NextBuild1 has 4 images
                     selectedBuild.id === 2 ? 6 : // NextBuild2 has 6 images
                     selectedBuild.id === 3 ? 3 : // NextBuild3 has 3 images
                     selectedBuild.id === 4 ? 2 : // NextBuild4 has 2 images
