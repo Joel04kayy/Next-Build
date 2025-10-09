@@ -104,6 +104,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
+    else if (selectedBuild?.id === 14) maxImages = 7 // NextBuild14 has 7 images
     
     setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : maxImages - 1)) // Loop back to last image
   }
@@ -123,6 +124,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 11) maxImages = 11 // NextBuild11 has 11 images
     else if (selectedBuild?.id === 12) maxImages = 6 // NextBuild12 has 6 images
     else if (selectedBuild?.id === 13) maxImages = 6 // NextBuild13 has 6 images
+    else if (selectedBuild?.id === 14) maxImages = 7 // NextBuild14 has 7 images
     
     setCurrentImageIndex((prev) => (prev < maxImages - 1 ? prev + 1 : 0)) // Loop back to first image
   }
@@ -594,6 +596,41 @@ export default function Gallery() {
       dimensions: "Full Setup Configuration",
       weight: "Complete Setup",
       warranty: "3 Years"
+    },
+    {
+      id: 14,
+      title: "AMD RTX 5080 Vision Compact",
+      category: "custom-pcs",
+      image: "/images/builds/custom-pcs/NextBuild14-1.jpg",
+      specs: [
+        "RTX 5080 16GB",
+        "AMD Ryzen 7 9800X3D",
+        "32GB DDR5-6000",
+        "4TB NVMe SSD"
+      ],
+      price: "$2,649",
+      description: "High-performance AMD build in the Lian Li O11 Vision Compact featuring the Ryzen 7 9800X3D and RTX 5080. Optimized thermals with ARCTIC Liquid Freezer III Pro and modular daisy-chain fans.",
+      features: [
+        "NVIDIA GeForce RTX 5080 16GB Founders Edition",
+        "AMD Ryzen 7 9800X3D 8-Core",
+        "32GB DDR5-6000 Trident Z5 Neo RGB",
+        "ARCTIC Liquid Freezer III Pro 360 AIO",
+        "4TB WD Black SN850X NVMe SSD",
+        "1000W Lian Li EDGE GOLD PSU",
+        "Lian Li O11 Vision Compact Case",
+        "Aisahorse Dawn 120mm ARGB Daisy-Chain Fans",
+        "Windows 11 Pro",
+        "Clean white-themed build"
+      ],
+      performance: {
+        gaming: "4K Ultra 144fps",
+        productivity: "Excellent",
+        cooling: "360mm AIO + Modular Fans",
+        noise: "Quiet"
+      },
+      dimensions: "17\" x 8\" x 16\"",
+      weight: "28 lbs",
+      warranty: "3 Years"
     }
   ]
 
@@ -894,7 +931,9 @@ export default function Gallery() {
                               ? `/images/builds/custom-pcs/NextBuild10-${currentImageIndex + 1}.jpg`
                               : selectedBuild.id === 12
                                 ? `/images/builds/custom-pcs/NextBuild12-${currentImageIndex + 1}.jpg`
-                                : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
+                                : selectedBuild.id === 14
+                                  ? `/images/builds/custom-pcs/NextBuild14-${currentImageIndex + 1}.jpg`
+                                  : `/images/builds/custom-pcs/NextBuild1-${currentImageIndex + 1}.jpg`
                     }
                     alt={`${selectedBuild.title} - Photo ${currentImageIndex + 1}`}
                     fill
@@ -920,6 +959,7 @@ export default function Gallery() {
                       selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                       selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                       selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
+                      selectedBuild.id === 14 ? 7 : // NextBuild14 has 7 images
                       5 // default fallback
                     }
                   </div>
@@ -962,6 +1002,7 @@ export default function Gallery() {
                     selectedBuild.id === 11 ? 11 : // NextBuild11 has 11 images
                     selectedBuild.id === 12 ? 6 : // NextBuild12 has 6 images
                     selectedBuild.id === 13 ? 6 : // NextBuild13 has 6 images
+                    selectedBuild.id === 14 ? 7 : // NextBuild14 has 7 images
                     5 // default fallback
                   }, (_, index) => (
                     <button
