@@ -96,7 +96,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
     else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
     else if (selectedBuild?.id === 5) maxImages = 9 // NextBuild5 has 9 images
-    else if (selectedBuild?.id === 6) maxImages = 2 // NextBuild6 has 2 images
+    else if (selectedBuild?.id === 6) maxImages = 3 // NextBuild6 has 3 images
     else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
@@ -111,7 +111,7 @@ export default function Gallery() {
     else if (selectedBuild?.id === 3) maxImages = 3 // NextBuild3 has 3 images
     else if (selectedBuild?.id === 4) maxImages = 2 // NextBuild4 has 2 images
     else if (selectedBuild?.id === 5) maxImages = 9 // NextBuild5 has 9 images
-    else if (selectedBuild?.id === 6) maxImages = 2 // NextBuild6 has 2 images
+    else if (selectedBuild?.id === 6) maxImages = 3 // NextBuild6 has 3 images
     else if (selectedBuild?.id === 7) maxImages = 8 // NextBuild7 has 8 images
     else if (selectedBuild?.id === 8) maxImages = 2 // NextBuild8 has 2 images
     else if (selectedBuild?.id === 9) maxImages = 2 // NextBuild9 has 2 images
@@ -718,7 +718,7 @@ export default function Gallery() {
                       ? selectedBuild.id === 4
                         ? `/images/builds/custom-pcs/NextBuild4-${currentImageIndex + 1}.jpg`
                         : selectedBuild.id === 6
-                          ? `/images/builds/custom-pcs/NextBuild6-${currentImageIndex + 2}.jpg`
+                          ? `/images/builds/custom-pcs/NextBuild6-${currentImageIndex + 1}.jpg`
                           : `/images/builds/custom-pcs/NextBuild2-${currentImageIndex + 1}.jpg`
                       : selectedBuild.id === 3
                         ? `/images/builds/custom-pcs/NextBuild3-${currentImageIndex + 1}.jpg`
@@ -748,7 +748,7 @@ export default function Gallery() {
                       selectedBuild.id === 3 ? 3 : // NextBuild3 has 3 images
                       selectedBuild.id === 4 ? 2 : // NextBuild4 has 2 images
                       selectedBuild.id === 5 ? 9 : // NextBuild5 has 9 images
-                      selectedBuild.id === 6 ? 2 : // NextBuild6 has 2 images
+                      selectedBuild.id === 6 ? 3 : // NextBuild6 has 3 images
                       selectedBuild.id === 7 ? 8 : // NextBuild7 has 8 images
                       selectedBuild.id === 8 ? 2 : // NextBuild8 has 2 images
                       selectedBuild.id === 9 ? 2 : // NextBuild9 has 2 images
