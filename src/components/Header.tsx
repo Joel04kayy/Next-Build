@@ -62,7 +62,7 @@ export default function Header() {
             ))}
             <ThemeToggle />
             <AnimatedButton variant="primary" href="#contact">
-              Get Quote
+              Get in Touch
             </AnimatedButton>
           </div>
 
@@ -105,7 +105,7 @@ export default function Header() {
                 </Link>
               ))}
               <AnimatedButton variant="primary" className="w-full mt-4" href="#contact">
-                Get Quote
+                Get in Touch
               </AnimatedButton>
             </div>
           </div>
