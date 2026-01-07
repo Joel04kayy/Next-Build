@@ -25,17 +25,16 @@ export default function Hero() {
     setCurrentImage(0)
   }, [isClient, theme])
 
-  // Don't render until client-side hydration is complete
-  if (!isClient) {
-    return null
-  }
+  // Use default image during SSR to prevent layout shift
+  // Default to dark mode image, will update on client hydration
+  const imageSrc = !isClient ? darkModeImage : (theme === 'light' ? lightModeImage : darkModeImage)
 
       return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-50 dark:bg-black scroll-mt-24">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src={theme === 'light' ? lightModeImage : darkModeImage}
+              src={imageSrc}
               alt="Professional Computer Setup"
               fill
               className="object-cover"
