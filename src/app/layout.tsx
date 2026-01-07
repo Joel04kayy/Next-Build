@@ -8,20 +8,20 @@ import ClientThemeProvider from '@/components/ClientThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Next Build - Professional Computer Building Services',
-  description: 'Expert computer building services for gaming, workstations, and custom PCs. Professional assembly, optimization, and support.',
+  title: 'Next Build PCs',
+  description: 'Computer building services for gaming, workstations, and custom PCs. Professional assembly, optimization, and support.',
   keywords: 'computer building, custom PC, gaming computer, workstation, PC assembly, computer repair',
   authors: [{ name: 'Next Build' }],
   openGraph: {
-    title: 'Next Build - Professional Computer Building Services',
-    description: 'Expert computer building services for gaming, workstations, and custom PCs.',
+    title: 'Next Build PCs',
+    description: 'Computer building services for gaming, workstations, and custom PCs. Professional assembly, optimization, and support.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Next Build - Professional Computer Building Services',
-    description: 'Expert computer building services for gaming, workstations, and custom PCs.',
+    title: 'Next Build PCs',
+    description: 'Computer building services for gaming, workstations, and custom PCs. Professional assembly, optimization, and support.',
   },
   robots: {
     index: true,
