@@ -45,9 +45,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="mb-8 block">
+            <button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+              className="mb-8 block cursor-pointer"
+              aria-label="Go to home"
+            >
               <Logo size="lg" className="text-white" />
-            </Link>
+            </button>
             <p className="text-gray-600 dark:text-gray-500 mb-8 text-lg leading-relaxed">
               Professional computer building services for gaming, workstations, and custom PCs. 
               Quality builds, expert support, and unbeatable performance.

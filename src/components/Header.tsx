@@ -38,9 +38,15 @@ export default function Header() {
         <div className="flex justify-between items-center py-6 w-full">
           {/* Logo - Left Side */}
           <div className="flex-shrink-0 -ml-4">
-            <Link href="#home">
+            <button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+              className="cursor-pointer"
+              aria-label="Go to home"
+            >
               <Logo size="xl" />
-            </Link>
+            </button>
           </div>
 
           {/* Desktop Navigation - Right Side */}
